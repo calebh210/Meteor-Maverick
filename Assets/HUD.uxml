@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xmlns="UnityEngine.UIElements">
+    <ui:VisualElement>
+        <ui:VisualElement name="Container" style="height: 406px; padding-bottom: 0; justify-content: flex-end; flex-direction: column-reverse;">
+            <ui:ProgressBar value="100" title="Health" style="margin-left: 30%; margin-right: 30%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
