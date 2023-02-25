@@ -1,7 +1,8 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xmlns="UnityEngine.UIElements">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xmlns="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIStyleSheet.uss?fileID=7433441132597879392&amp;guid=a61d2798b3db5f04a9ecdabed63c4ddc&amp;type=3#UIStyleSheet" />
     <ui:VisualElement>
         <ui:VisualElement name="Container" style="height: 406px; padding-bottom: 0; justify-content: flex-end; flex-direction: column-reverse;">
-            <ui:ProgressBar value="100" title="Health" style="margin-left: 30%; margin-right: 30%;" />
+            <ui:ProgressBar value="100" title="Health" focusable="false" name="HealthBar" style="margin-left: 0; margin-right: 0; background-color: rgba(0, 0, 0, 0); -unity-background-image-tint-color: rgb(243, 0, 0); align-items: stretch; font-size: 16px; padding-left: 0; width: auto; -unity-background-scale-mode: scale-and-crop; justify-content: flex-start;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

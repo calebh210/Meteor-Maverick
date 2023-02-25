@@ -4,14 +4,31 @@ using UnityEngine;
 
 //THIS VIDEO WAS A BIG HELP https://www.youtube.com/watch?v=JVbr7osMYTo
 
+
+//TODO:
+// 1. Fix crosshair/make crosshair more accuruate
+// 2. Make crosshair controls more fluid / switch to using WASD instead of mouse
+// 3. Make collision with terrain/enemies more like starfox (bounce off/phase through and take damage, doesn't mess with controls)
+// 4. Make enemies move and fire back
+// 5. Set up GitHub
+
 public class Player : MonoBehaviour
 {
     private Transform Model;
     private Transform FirePoint;
     public Camera cam;
 
-    public float fireRate = 0.5F;
+
+
+    //creating the container for the playerUI
+    UIController playerUI; 
+    //setting up the player's health val
+    public float playerHealth = 100f;
+
+    public float fireRate = 0.25F;
     private float nextFire = 0.0F;
+
+
 
     //Making the missile and bullet objects
     public GameObject missile;
@@ -32,6 +49,9 @@ public class Player : MonoBehaviour
         //Gets the playermodel mesh as a seperate Transform
         //Doing this so that rotating the model doesn't affect control
         Model = this.gameObject.transform.GetChild(0);
+
+        //Linking the playerUI to the UI script, look for ways to optimize this
+        playerUI = GameObject.Find("UIDocument").GetComponent<UIController>();
 
     }
   
@@ -101,13 +121,14 @@ public class Player : MonoBehaviour
             GameObject firedBullet = Instantiate(bullet, FirePoint.position, FirePoint.rotation);
             firedBullet.transform.Rotate(90, 0, 0);
             firedBullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, 5000f));
+            nextFire = Time.time + fireRate;
         }
 
         if (Input.GetButtonDown("Fire2"))
         {
             GameObject firedMissile = Instantiate(missile, FirePoint.position, FirePoint.rotation);
-            firedMissile.transform.Rotate(90, 0, 0);
-            firedMissile.GetComponent<Rigidbody>().AddRelativeForce(new Vector3 (0, 0, 5000f));
+            //firedMissile.transform.Rotate(90, 0, 0);
+            //firedMissile.GetComponent<Rigidbody>().AddRelativeForce(new Vector3 (0, 0, 5000f));
 
 
         }
@@ -120,7 +141,7 @@ public class Player : MonoBehaviour
         yawLean(Model, horizontal, 35, 0.3f);
         VerticalLean(Model, vertical, 50, 0.2f);
 
-       
+       //updateHealth(-1f);
 
 
     }
@@ -212,6 +233,21 @@ public class Player : MonoBehaviour
 
 
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("crashed");
+        updateHealth(-50f);
+    }
+    void updateHealth(float damage)
+    {
+
+        playerHealth += damage;
+        playerUI.updateHealth(playerHealth);
+        if (playerHealth <= 0)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
+    }   
 
 
 }

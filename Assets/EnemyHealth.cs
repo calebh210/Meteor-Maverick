@@ -9,16 +9,34 @@ public class EnemyHealth : MonoBehaviour
 
     public GameObject crashingFX;
     public GameObject impactFX;
-    // Start is called before the first frame update
+
+    //fields for shooting at player
+    Transform enemyFirePoint;
+    [SerializeField]
+    GameObject missile;
+    float fireRate;
+    float nextFire;
     void Start()
     {
-        
+        fireRate = 1f;
+        nextFire = Time.time;
+        enemyFirePoint = this.gameObject.transform.GetChild(6);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        FireGun();
+    }
+
+    void FireGun()
+    {
+        if(Time.time > nextFire && currentHealth > 0)
+        {
+            enemyFirePoint.LookAt(GameObject.Find("PlayerCamParent/Player/PlayerModel").transform);
+            Instantiate(missile, enemyFirePoint.position, enemyFirePoint.rotation);
+            nextFire = Time.time + fireRate;
+        }
     }
 
     public void TakeDamage(float damageTaken)
