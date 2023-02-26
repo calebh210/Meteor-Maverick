@@ -8,11 +8,11 @@ public class CamMovement : MonoBehaviour
 
     public Vector3 offset = Vector3.zero;
 
-    public float smoothTime;
+    private float smoothTime = 0.25f;
 
     private Vector3 velocity = Vector3.zero;
 
-    public Vector2 limits = new Vector2(5, 3);
+    public Vector2 limits = new Vector2(6, 4);
 
     private void Start()
     {

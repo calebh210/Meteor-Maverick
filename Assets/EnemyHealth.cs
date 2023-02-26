@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour
     float nextFire;
     void Start()
     {
-        fireRate = 1f;
+        fireRate = 5f;
         nextFire = Time.time;
         enemyFirePoint = this.gameObject.transform.GetChild(6);
     }

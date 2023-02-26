@@ -10,7 +10,8 @@ using UnityEngine;
 // 2. Make crosshair controls more fluid / switch to using WASD instead of mouse
 // 3. Make collision with terrain/enemies more like starfox (bounce off/phase through and take damage, doesn't mess with controls)
 // 4. Make enemies move and fire back
-// 5. Set up GitHub
+// 5. Add UI Elements showing boost, missiles, and other features
+// 6. Change boost and brake to move cam distance not FOV
 
 public class Player : MonoBehaviour
 {
@@ -33,7 +34,8 @@ public class Player : MonoBehaviour
     //Making the missile and bullet objects
     public GameObject missile;
     public GameObject bullet;
-    private Vector3 aim;
+
+
     [Header("Parameters")]
     public float Speed = 30f;
   
@@ -41,14 +43,14 @@ public class Player : MonoBehaviour
     void Start()
     {
 
+        //So that I don't move off screen while testing
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
-        cam = Camera.main;
-        FirePoint = this.gameObject.transform.GetChild(1);
 
+        cam = Camera.main;
         //Gets the playermodel mesh as a seperate Transform
-        //Doing this so that rotating the model doesn't affect control
         Model = this.gameObject.transform.GetChild(0);
+        FirePoint = this.gameObject.transform.GetChild(1);
 
         //Linking the playerUI to the UI script, look for ways to optimize this
         playerUI = GameObject.Find("UIDocument").GetComponent<UIController>();
@@ -60,43 +62,49 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        FirePoint.rotation = Model.rotation;
-        
-        /*Vector3 mousePos = Input.mousePosition;
-        mousePos += Camera.main.transform.forward * -10f;
-        aim = Camera.main.ScreenToWorldPoint(mousePos);
-        FirePoint.LookAt(aim);*/
+        /*FirePoint.rotation = Model.rotation;*/
+
+
+        /*aim = GameObject.Find("/Canvas/Crosshair").transform.position;
+        transform.LookAt(aim);*/
 
         float horizontal = Input.GetAxis("Mouse X");
         float vertical = Input.GetAxis("Mouse Y");
 
+        //Controls using WASD
+        /*  float horizontal = Input.GetAxisRaw("Horizontal");
+          float vertical = Input.GetAxisRaw("Vertical");*/
+        
+
         /* Code for knife flying left or right, LeanTween is awesome for this */
+        //TODO FIX ANIMATION ON THIS
 
         if (Input.GetKey("e")){
-            LeanTween.rotateZ(Model.gameObject, -90, 0.2f);
+            LeanTween.rotateZ(gameObject, -90, 0.2f);
 
         }
+
         if (Input.GetKeyUp("e"))
         {
-            LeanTween.rotateZ(Model.gameObject ,0, 0.1f);
+            LeanTween.rotateZ(gameObject, 0, 0.2f);
         }
 
         if (Input.GetKey("q"))
         {
             //transform.Rotate(0, 0, 90);
-            LeanTween.rotateZ(Model.gameObject, 90, 0.2f);
+            LeanTween.rotateZ(gameObject, 90, 0.2f);
         }
-        if (Input.GetKeyUp("q"))
+
+       /* if (!Input.GetKey("q") && !Input.GetKey("e"))
         {
-            /*LeanTween.rotateZ(Model.gameObject, 0, 0.1f);*/
-        }
+            LeanTween.rotateZ(gameObject, 0, 0.2f);
+        }*/
 
         /* Do a barrel roll! */
         if (Input.GetKeyDown("z"))
         {
-            LeanTween.rotateAroundLocal(Model.gameObject, Vector3.forward, 360f, 0.4f);
+            LeanTween.rotateAroundLocal(gameObject, Vector3.forward, 360f, 0.4f);
 
-            //Add code for barrel roll here
         }
 
         if (Input.GetKeyDown("space"))
@@ -118,30 +126,28 @@ public class Player : MonoBehaviour
 
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
-            GameObject firedBullet = Instantiate(bullet, FirePoint.position, FirePoint.rotation);
-            firedBullet.transform.Rotate(90, 0, 0);
-            firedBullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, 5000f));
+            Instantiate(bullet, FirePoint.position, FirePoint.rotation);
             nextFire = Time.time + fireRate;
         }
 
         if (Input.GetButtonDown("Fire2"))
         {
-            GameObject firedMissile = Instantiate(missile, FirePoint.position, FirePoint.rotation);
-            //firedMissile.transform.Rotate(90, 0, 0);
-            //firedMissile.GetComponent<Rigidbody>().AddRelativeForce(new Vector3 (0, 0, 5000f));
-
-
+            Instantiate(missile, FirePoint.position, FirePoint.rotation);
+  
         }
 
    
 
-        Move(horizontal, vertical, Speed);
-        //on rail settings
-        HorizontalLean(Model, horizontal, 60, 0.2f);
-        yawLean(Model, horizontal, 35, 0.3f);
-        VerticalLean(Model, vertical, 50, 0.2f);
+        Move(horizontal, vertical, 15);
+      
+        HorizontalLean(transform, horizontal, 60, 0.2f);
 
-       //updateHealth(-1f);
+        //Option to turn on yaw pitching, looks mid
+        //yawLean(transform, horizontal, 15, 0.5f);
+
+        VerticalLean(transform, vertical, 50, 0.2f);
+
+  
 
 
     }
@@ -153,6 +159,7 @@ public class Player : MonoBehaviour
 
     void Move(float x, float y, float s)
     {
+       
         transform.localPosition += new Vector3(x, y, 0) * s * Time.deltaTime;
         
 
@@ -161,20 +168,16 @@ public class Player : MonoBehaviour
     //https://answers.unity.com/questions/799656/how-to-keep-an-object-within-the-camera-view.html
     void Clamp() 
     {
-/*
-        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-        pos.x = Mathf.Clamp01(pos.x);
-        pos.y = Mathf.Clamp01(pos.y);
-        transform.position = Camera.main.ViewportToWorldPoint(pos);*/
-
 
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
         pos.x = Mathf.Clamp(pos.x, 0.1f, 0.9f);
         pos.y = Mathf.Clamp(pos.y, 0.1f, 0.9f);
         transform.position = Camera.main.ViewportToWorldPoint(pos);
 
+     
 
     }
+
 
     void HorizontalLean(Transform target, float axis, float leanLimit, float lerpTime)
     {
@@ -196,19 +199,21 @@ public class Player : MonoBehaviour
         target.localEulerAngles = new Vector3(targetEulerAngels.x, Mathf.LerpAngle(targetEulerAngels.y, axis * leanLimit, lerpTime), targetEulerAngels.z);
     }
 
+
+    
     public void BrakeZoomIn(bool status)
     {
         if (status)
         {
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 35, 0.5f);
-            //cam.fieldOfView = 110f;
+            //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 35, 0.5f);
+            cam.transform.localPosition = new Vector3(0, 0, -6f);
             gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 3f;
 
         }
         else
         {
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, 0.5f);
-            //cam.fieldOfView = 60f;
+           //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, 0.5f);
+                 cam.transform.localPosition = new Vector3(0, 0, -8f);
             gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 5f;
 
         }
@@ -218,15 +223,15 @@ public class Player : MonoBehaviour
     {
         if (status)
         {
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 110, 0.5f);
-            //cam.fieldOfView = 110f;
-            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 15f;
+            //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 110, 0.5f);
+            cam.transform.localPosition = new Vector3(0,0,-12f);
+            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 30f;
 
         }
         else
         {
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, 0.5f);
-            //cam.fieldOfView = 60f;
+            //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, 0.5f);
+            cam.transform.localPosition = new Vector3(0, 0, -8f);
             gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 5f;
 
         }
