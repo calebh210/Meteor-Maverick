@@ -17,8 +17,10 @@ public class Player : MonoBehaviour
 {
     private Transform Model;
     private Transform FirePoint;
+    private Transform closeCrosshair;
     public Camera cam;
 
+    private Vector2 crosshairLimits = new Vector2(2, 2);
 
 
     //creating the container for the playerUI
@@ -51,7 +53,7 @@ public class Player : MonoBehaviour
         //Gets the playermodel mesh as a seperate Transform
         Model = this.gameObject.transform.GetChild(0);
         FirePoint = this.gameObject.transform.GetChild(1);
-
+        closeCrosshair = this.gameObject.transform.GetChild(2);
         //Linking the playerUI to the UI script, look for ways to optimize this
         playerUI = GameObject.Find("UIDocument").GetComponent<UIController>();
 
@@ -161,7 +163,6 @@ public class Player : MonoBehaviour
     {
        
         transform.localPosition += new Vector3(x, y, 0) * s * Time.deltaTime;
-        
 
     }
 
@@ -213,7 +214,7 @@ public class Player : MonoBehaviour
         else
         {
            //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, 0.5f);
-                 cam.transform.localPosition = new Vector3(0, 0, -8f);
+            cam.transform.localPosition = new Vector3(0, 0, -8f);
             gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 5f;
 
         }
