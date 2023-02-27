@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
         float horizontal = Input.GetAxis("Mouse X");
         float vertical = Input.GetAxis("Mouse Y");
-
+        Debug.Log(horizontal);
         //Controls using WASD
         /*  float horizontal = Input.GetAxisRaw("Horizontal");
           float vertical = Input.GetAxisRaw("Vertical");*/
