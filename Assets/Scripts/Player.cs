@@ -12,12 +12,19 @@ using UnityEngine;
 // 4. Make enemies move and fire back
 // 5. Add UI Elements showing boost, missiles, and other features
 // 6. Change boost and brake to move cam distance not FOV
+// 7. Add SFX to explosion https://freesound.org/people/derplayer/sounds/587186/
 
 public class Player : MonoBehaviour
 {
     private Transform Model;
     private Transform FirePoint;
+
     private Transform closeCrosshair;
+    private Vector3 closeCrosshairDefault = new Vector3(0, 0, 10);
+
+    private Transform farCrosshair;
+    public Collider crosshairCollider;
+
     public Camera cam;
 
     private Vector2 crosshairLimits = new Vector2(2, 2);
@@ -48,12 +55,13 @@ public class Player : MonoBehaviour
         //So that I don't move off screen while testing
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
-
+        crosshairCollider = GetComponent<BoxCollider>();
         cam = Camera.main;
         //Gets the playermodel mesh as a seperate Transform
         Model = this.gameObject.transform.GetChild(0);
         FirePoint = this.gameObject.transform.GetChild(1);
         closeCrosshair = this.gameObject.transform.GetChild(2);
+        farCrosshair = this.gameObject.transform.GetChild(3);
         //Linking the playerUI to the UI script, look for ways to optimize this
         playerUI = GameObject.Find("UIDocument").GetComponent<UIController>();
 
@@ -70,13 +78,13 @@ public class Player : MonoBehaviour
         /*aim = GameObject.Find("/Canvas/Crosshair").transform.position;
         transform.LookAt(aim);*/
 
-        float horizontal = Input.GetAxis("Mouse X");
-        float vertical = Input.GetAxis("Mouse Y");
-        Debug.Log(horizontal);
+        /*float horizontal = Input.GetAxis("Mouse X");
+        float vertical = Input.GetAxis("Mouse Y");*/
+
         //Controls using WASD
-        /*  float horizontal = Input.GetAxisRaw("Horizontal");
-          float vertical = Input.GetAxisRaw("Vertical");*/
-        
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
 
         /* Code for knife flying left or right, LeanTween is awesome for this */
         //TODO FIX ANIMATION ON THIS
@@ -140,40 +148,116 @@ public class Player : MonoBehaviour
 
    
 
-        Move(horizontal, vertical, 15);
-      
-        HorizontalLean(transform, horizontal, 60, 0.2f);
+        Move(horizontal, vertical, 10);
+        //MoveCrosshair(horizontal, vertical, 20);
+
+        HorizontalLean(Model, horizontal, 60, 0.2f);
 
         //Option to turn on yaw pitching, looks mid
         //yawLean(transform, horizontal, 15, 0.5f);
+        VerticalLean(Model, -vertical, 40, 0.2f);
 
-        VerticalLean(transform, vertical, 50, 0.2f);
 
-  
+      
+
 
 
     }
 
     private void LateUpdate()
     {
-        Clamp();
+        Clamp(closeCrosshair.transform);
+        Clamp(transform);
     }
+
 
     void Move(float x, float y, float s)
     {
        
-        transform.localPosition += new Vector3(x, y, 0) * s * Time.deltaTime;
+        closeCrosshair.transform.localPosition += new Vector3(x, -y, 0) * s * Time.deltaTime;
+        transform.localPosition += new Vector3(closeCrosshair.transform.localPosition.x, closeCrosshair.transform.localPosition.y, 0) * 2 * Time.deltaTime;
+        if (x == 0f && y == 0f)
+        {
+            closeCrosshair.localPosition = Vector3.Lerp(closeCrosshair.localPosition, closeCrosshairDefault, 3 * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * 1f);
+        }
+
+        var lookPos = closeCrosshair.transform.position - Model.transform.position;
+        lookPos.y = 0;
+        var rotation = Quaternion.LookRotation(lookPos);
+      
+        Model.transform.rotation = Quaternion.Slerp(Model.transform.rotation, rotation, Time.deltaTime * 1.75f);
+
+        //transform.LookAt(closeCrosshair.transform);
+        FirePoint.LookAt(closeCrosshair.transform);
+
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(FirePoint.transform.position, FirePoint.transform.forward, out hit))
+        {
+            if (hit.collider)
+            {
+                farCrosshair.transform.position = hit.point;
+            }
+        }
+
+
+
+
+    }
+
+    void MoveCrosshair(float x, float y, float s)
+    {
+
+        if( x == 0f && y == 0f)
+        {
+            closeCrosshair.localPosition = Vector3.Lerp(closeCrosshair.localPosition, closeCrosshairDefault, 3*Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * 3f);
+            
+           
+        }
+        else
+        {
+
+            closeCrosshair.localPosition += new Vector3(x, -y, 0) * s * Time.deltaTime;
+
+            Vector3 pos = Camera.main.WorldToViewportPoint(closeCrosshair.transform.position);
+            pos.x = Mathf.Clamp01(pos.x);
+            pos.y = Mathf.Clamp01(pos.y);
+            closeCrosshair.transform.position = Camera.main.ViewportToWorldPoint(pos);
+
+
+
+            //this isnt working - fix this
+            if (transform.rotation.y > -45 && transform.rotation.y < 45)
+            {
+                
+                //rotating ship to look at crosshair
+                var lookPos = closeCrosshair.transform.position - transform.position;
+                lookPos.y = 0;
+                var rotation = Quaternion.LookRotation(lookPos);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 1f);
+            }
+            else
+            {
+                Debug.Log("hit bound");
+            }
+        }
+      
+
+
 
     }
 
     //https://answers.unity.com/questions/799656/how-to-keep-an-object-within-the-camera-view.html
-    void Clamp() 
+    void Clamp(Transform target) 
     {
 
-        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-        pos.x = Mathf.Clamp(pos.x, 0.1f, 0.9f);
-        pos.y = Mathf.Clamp(pos.y, 0.1f, 0.9f);
-        transform.position = Camera.main.ViewportToWorldPoint(pos);
+        Vector3 pos = Camera.main.WorldToViewportPoint(target.position);
+        pos.x = Mathf.Clamp01(pos.x);
+        pos.y = Mathf.Clamp01(pos.y);
+        target.position = Camera.main.ViewportToWorldPoint(pos);
 
      
 
