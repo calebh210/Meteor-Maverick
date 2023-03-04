@@ -24,6 +24,9 @@ public class moveCrosshair : MonoBehaviour
     private void LateUpdate()
     {
         transform.position = cam.WorldToScreenPoint(crossPos.transform.position);
+    
     }
+
 }
+
 
