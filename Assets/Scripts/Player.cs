@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private Vector3 closeCrosshairDefault = new Vector3(0, 0, 10);
 
     private Transform farCrosshair;
-    public Collider crosshairCollider;
+    //public Collider crosshairCollider;
 
     public Camera cam;
 
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     //creating the container for the playerUI
     UIController playerUI; 
     //setting up the player's health val
-    public float playerHealth = 100f;
+    public float playerHealth = 100000f;
 
     public float fireRate = 0.25F;
     private float nextFire = 0.0F;
@@ -55,7 +55,6 @@ public class Player : MonoBehaviour
         //So that I don't move off screen while testing
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
-        crosshairCollider = GetComponent<BoxCollider>();
         cam = Camera.main;
         //Gets the playermodel mesh as a seperate Transform
         Model = this.gameObject.transform.GetChild(0);
@@ -90,25 +89,30 @@ public class Player : MonoBehaviour
         //TODO FIX ANIMATION ON THIS
 
         if (Input.GetKey("e")){
-            LeanTween.rotateZ(gameObject, -90, 0.2f);
+            LeanTween.rotateZ(Model.gameObject, -90, 0.2f);
 
         }
 
         if (Input.GetKeyUp("e"))
         {
-            LeanTween.rotateZ(gameObject, 0, 0.2f);
+            LeanTween.rotateZ(Model.gameObject, 0, 0.2f);
         }
 
         if (Input.GetKey("q"))
         {
             //transform.Rotate(0, 0, 90);
-            LeanTween.rotateZ(gameObject, 90, 0.2f);
+            LeanTween.rotateZ(Model.gameObject, 90, 0.2f); 
         }
 
-       /* if (!Input.GetKey("q") && !Input.GetKey("e"))
+        if (Input.GetKeyUp("q"))
         {
-            LeanTween.rotateZ(gameObject, 0, 0.2f);
-        }*/
+            LeanTween.rotateZ(Model.gameObject, 0, 0.2f);
+        }
+
+        /* if (!Input.GetKey("q") && !Input.GetKey("e"))
+         {
+             LeanTween.rotateZ(gameObject, 0, 0.2f);
+         }*/
 
         /* Do a barrel roll! */
         if (Input.GetKeyDown("z"))
@@ -176,19 +180,24 @@ public class Player : MonoBehaviour
        
         closeCrosshair.transform.localPosition += new Vector3(x, -y, 0) * s * Time.deltaTime;
         transform.localPosition += new Vector3(closeCrosshair.transform.localPosition.x, closeCrosshair.transform.localPosition.y, 0) * 2 * Time.deltaTime;
+
         if (x == 0f && y == 0f)
         {
             closeCrosshair.localPosition = Vector3.Lerp(closeCrosshair.localPosition, closeCrosshairDefault, 3 * Time.deltaTime);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * 1f);
+            //I commented this line out because I didn't know what it was doing and it fixed the dolly track bug.
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * 1f);
         }
 
         var lookPos = closeCrosshair.transform.position - Model.transform.position;
         lookPos.y = 0;
         var rotation = Quaternion.LookRotation(lookPos);
       
-        Model.transform.rotation = Quaternion.Slerp(Model.transform.rotation, rotation, Time.deltaTime * 1.75f);
+        Model.transform.rotation = Quaternion.Slerp(Model.transform.rotation, rotation, Time.deltaTime * 2.75f);
 
         //transform.LookAt(closeCrosshair.transform);
+
+        //Model.LookAt(closeCrosshair.transform);
+
         FirePoint.LookAt(closeCrosshair.transform);
 
 
@@ -220,7 +229,7 @@ public class Player : MonoBehaviour
         else
         {
 
-            closeCrosshair.localPosition += new Vector3(x, -y, 0) * s * Time.deltaTime;
+            closeCrosshair.position += new Vector3(x, -y, 0) * s * Time.deltaTime;
 
             Vector3 pos = Camera.main.WorldToViewportPoint(closeCrosshair.transform.position);
             pos.x = Mathf.Clamp01(pos.x);

@@ -36,6 +36,15 @@ public class HitByMissile : MonoBehaviour
             enemy.TakeDamage(damage);
             
         }
+
+        if (collision.gameObject.tag == "EnemyTurret")
+        {
+            EnemyTurret enemy = collision.gameObject.GetComponent<EnemyTurret>();
+            enemy.TakeDamage(damage);
+
+        }
+
+
         Destroy(gameObject);
         Destroy(missileHit, 1);
     }

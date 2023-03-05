@@ -10,7 +10,8 @@ public class BulletHit : MonoBehaviour
     void Start()
     {
         transform.Rotate(90, 0, 0);
-        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, 5000f));
+        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, 10000f));
+        Destroy(gameObject, 5);
     }
 
     // Update is called once per frame
@@ -29,6 +30,14 @@ public class BulletHit : MonoBehaviour
             enemy.TakeDamage(damage);
 
         }
+
+        if (collision.gameObject.tag == "EnemyTurret")
+        {
+            EnemyTurret enemy = collision.gameObject.GetComponent<EnemyTurret>();
+            enemy.TakeDamage(damage);
+
+        }
+
         Destroy(gameObject);
        
     }

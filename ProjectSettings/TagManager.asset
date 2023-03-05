@@ -8,6 +8,7 @@ TagManager:
   - EnemyShip
   - Terrain
   - HitPlane
+  - EnemyTurret
   layers:
   - Default
   - TransparentFX
