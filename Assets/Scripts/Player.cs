@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     //creating the container for the playerUI
     UIController playerUI; 
     //setting up the player's health val
-    public float playerHealth = 100000f;
+    public float playerHealth = 10000f;
 
     public float fireRate = 0.25F;
     private float nextFire = 0.0F;
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
             Instantiate(bullet, FirePoint.position, FirePoint.rotation);
             nextFire = Time.time + fireRate;
         }
-
+                                
         if (Input.GetButtonDown("Fire2"))
         {
             Instantiate(missile, FirePoint.position, FirePoint.rotation);
