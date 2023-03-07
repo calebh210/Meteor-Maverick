@@ -121,19 +121,19 @@ public class Player : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKey("space"))
         {
             BoostZoomOut(true);
         }
-        if (Input.GetKeyUp("space"))
+        else if (Input.GetKeyUp("space"))
         {
             BoostZoomOut(false);
         }
-        if (Input.GetKeyDown("c"))
+        if (Input.GetKey("c"))
         {
             BrakeZoomIn(true);
         }
-        if (Input.GetKeyUp("c"))
+        else if (Input.GetKeyUp("c"))
         {
             BrakeZoomIn(false);
         }
@@ -153,7 +153,6 @@ public class Player : MonoBehaviour
    
 
         Move(horizontal, vertical, 10);
-        //MoveCrosshair(horizontal, vertical, 20);
 
         HorizontalLean(Model, horizontal, 60, 0.2f);
 
@@ -216,48 +215,6 @@ public class Player : MonoBehaviour
 
     }
 
-    void MoveCrosshair(float x, float y, float s)
-    {
-
-        if( x == 0f && y == 0f)
-        {
-            closeCrosshair.localPosition = Vector3.Lerp(closeCrosshair.localPosition, closeCrosshairDefault, 3*Time.deltaTime);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * 3f);
-            
-           
-        }
-        else
-        {
-
-            closeCrosshair.position += new Vector3(x, -y, 0) * s * Time.deltaTime;
-
-            Vector3 pos = Camera.main.WorldToViewportPoint(closeCrosshair.transform.position);
-            pos.x = Mathf.Clamp01(pos.x);
-            pos.y = Mathf.Clamp01(pos.y);
-            closeCrosshair.transform.position = Camera.main.ViewportToWorldPoint(pos);
-
-
-
-            //this isnt working - fix this
-            if (transform.rotation.y > -45 && transform.rotation.y < 45)
-            {
-                
-                //rotating ship to look at crosshair
-                var lookPos = closeCrosshair.transform.position - transform.position;
-                lookPos.y = 0;
-                var rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 1f);
-            }
-            else
-            {
-                Debug.Log("hit bound");
-            }
-        }
-      
-
-
-
-    }
 
     //https://answers.unity.com/questions/799656/how-to-keep-an-object-within-the-camera-view.html
     void Clamp(Transform target) 
@@ -299,16 +256,16 @@ public class Player : MonoBehaviour
     {
         if (status)
         {
-            //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 35, 0.5f);
-            cam.transform.localPosition = new Vector3(0, 0, -6f);
+            //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, Time.deltaTime * 2f);
+            //cam.transform.localPosition = new Vector3(0, 0, -6f);
             gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 3f;
 
         }
         else
         {
-           //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, 0.5f);
-            cam.transform.localPosition = new Vector3(0, 0, -8f);
-            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 5f;
+           //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 110, Time.deltaTime  * 2f);
+           //cam.transform.localPosition = new Vector3(0, 0, -8f);
+            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 10f;
 
         }
     }
@@ -317,16 +274,16 @@ public class Player : MonoBehaviour
     {
         if (status)
         {
-            //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 110, 0.5f);
-            cam.transform.localPosition = new Vector3(0,0,-12f);
+            //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 120, Time.deltaTime);
+            //cam.transform.localPosition = new Vector3(0,0,-12f);
             gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 30f;
 
         }
         else
         {
-            //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, 0.5f);
-            cam.transform.localPosition = new Vector3(0, 0, -8f);
-            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 5f;
+            //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 110, Time.deltaTime);
+            //cam.transform.localPosition = new Vector3(0, 0, -8f);
+            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 10f;
 
         }
 
@@ -342,6 +299,8 @@ public class Player : MonoBehaviour
 
         playerHealth += damage;
         playerUI.updateHealth(playerHealth);
+
+
         if (playerHealth <= 0)
         {
             FindObjectOfType<GameManager>().EndGame();

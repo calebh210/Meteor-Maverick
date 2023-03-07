@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Missile asset and license https://sketchfab.com/3d-models/sci-fi-missile-1be9ec86a68d4657920fec178be1626c
 public class HitByMissile : MonoBehaviour
 {
     public float damage = -101f;
@@ -10,7 +11,7 @@ public class HitByMissile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.Rotate(90, 0, 0);
+ 
         transform.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, 5000f));
        
     }

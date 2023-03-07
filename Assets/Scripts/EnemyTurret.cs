@@ -10,6 +10,7 @@ public class EnemyTurret : MonoBehaviour
     Transform enemyFirePoint;
     [SerializeField]
     GameObject missile;
+    public GameObject explosionFX;
     float fireRate = 10f;
     float nextFire = 0.0f;
     void Start()
@@ -39,7 +40,9 @@ public class EnemyTurret : MonoBehaviour
 
         if(currentHealth <= 0)
         {
+            GameObject explosion = Instantiate(explosionFX, transform.position, transform.rotation);
             Destroy(gameObject);
+            Destroy(explosion);
         }
     }
 
