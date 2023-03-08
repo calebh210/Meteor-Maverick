@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 62890796628802058}
   - component: {fileID: -2859407324381343976}
   - component: {fileID: 21826267359790731}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376118263806029483}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -128,7 +128,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2695420857087304744, guid: e6750c0212cbdf348851280c627206a4, type: 3}
 --- !u!1001 &3991114457342957975
