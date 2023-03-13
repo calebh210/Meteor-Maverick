@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //THIS VIDEO WAS A BIG HELP https://www.youtube.com/watch?v=JVbr7osMYTo
 
@@ -21,7 +22,10 @@ public class Player : MonoBehaviour
     private Transform closeCrosshair;
     private Vector3 closeCrosshairDefault = new Vector3(0, 0, 10);
 
+    GameObject firedMissile;
+
     private Transform farCrosshair;
+    public GameObject farCrossCanvas;
     //public Collider crosshairCollider;
 
     public Camera cam;
@@ -30,9 +34,12 @@ public class Player : MonoBehaviour
     //setting up the player's health val
     public float playerHealth = 10000f;
 
-    public float fireRate = 0.25F;
+    public float fireRate = 0.15F;
     private float nextFire = 0.0F;
     private int missileCount = 3;
+    private Vector3 lockOnCoordinates;
+    private bool lockedOn;
+    private bool missileFired = false;
 
 
     //Making the missile and bullet objects
@@ -112,7 +119,7 @@ public class Player : MonoBehaviour
         /* Do a barrel roll! */
         if (Input.GetKeyDown("z"))
         {
-            LeanTween.rotateAroundLocal(gameObject, Vector3.forward, 360f, 0.4f);
+            LeanTween.rotateAroundLocal(Model.gameObject, Vector3.forward, 360f, 0.4f);
 
         }
 
@@ -138,28 +145,22 @@ public class Player : MonoBehaviour
             Instantiate(bullet, FirePoint.position, FirePoint.rotation);
             nextFire = Time.time + fireRate;
         }
-                                
+
+
+
         if (Input.GetButtonDown("Fire2") && missileCount > 0)
         {
-            Instantiate(missile, FirePoint.position, FirePoint.rotation);
+            firedMissile = Instantiate(missile, FirePoint.position, FirePoint.rotation);
             missileCount--;
+           
         }
 
-   
-
         Move(horizontal, vertical, 10);
-
         HorizontalLean(Model, horizontal, 60, 0.2f);
-
         //Option to turn on yaw pitching, looks mid
-        //yawLean(transform, horizontal, 15, 0.5f);\
-
+        //yawLean(transform, horizontal, 15, 0.5f);
         VerticalLean(Model, -vertical, 40, 0.2f);
-
-
-      
-
-
+        crosshairLockOn();
 
     }
 
@@ -172,7 +173,7 @@ public class Player : MonoBehaviour
 
     void Move(float x, float y, float s)
     {
-       
+
         closeCrosshair.transform.localPosition += new Vector3(x, -y, 0) * s * Time.deltaTime;
         transform.localPosition += new Vector3(closeCrosshair.transform.localPosition.x, closeCrosshair.transform.localPosition.y, 0) * 2 * Time.deltaTime;
 
@@ -186,16 +187,22 @@ public class Player : MonoBehaviour
         var lookPos = closeCrosshair.transform.position - Model.transform.position;
         lookPos.y = 0;
         var rotation = Quaternion.LookRotation(lookPos);
-      
-        Model.transform.rotation = Quaternion.Slerp(Model.transform.rotation, rotation, Time.deltaTime * 2.75f);
+
+        Model.rotation = Quaternion.Slerp(Model.transform.rotation, rotation, Time.deltaTime * 2.75f);
 
         //transform.LookAt(closeCrosshair.transform);
 
         //Model.LookAt(closeCrosshair.transform);
 
         FirePoint.LookAt(closeCrosshair.transform);
+        Model.rotation = FirePoint.rotation;
 
 
+    }
+
+
+    void crosshairLockOn()
+    {
         RaycastHit hit;
 
         if (Physics.Raycast(FirePoint.transform.position, FirePoint.transform.forward, out hit))
@@ -204,13 +211,44 @@ public class Player : MonoBehaviour
             {
                 farCrosshair.transform.position = hit.point;
             }
+
+
         }
 
+        //Making a layercast to ignore the "IgnoreRaycast layer and HitPlane layer
+        //If the layercast wasnt there, it the ray would collide with the player or the hitplane
+        int mask1 = 1 << LayerMask.NameToLayer("Ignore Raycast");
+        int mask2 = 1 << LayerMask.NameToLayer("HitPlane");
+        int mask = mask1 | mask2;
+
+
+        //Shoots a raycast in the direction of the far crosshair relative to the screen
+        Ray ray = cam.ScreenPointToRay(farCrossCanvas.GetComponent<RectTransform>().position);
+        if (Physics.Raycast(ray, out hit, 200, ~mask))
+        {
+
+            Debug.DrawLine(ray.origin, hit.point);
+            //Debug.Log(hit.transform.tag);
 
 
 
+            if (hit.transform.tag == "Enemy")
+            {
+                //lockedOn = true;
+                farCrossCanvas.GetComponent<Image>().color = Color.red;
+                //lockOnCoordinates = hit.point;
+            }
+            else if (hit.transform.tag != "Enemy")
+            {
+                farCrossCanvas.GetComponent<Image>().color = Color.white;
+            }
+
+        }
+        else //if nothing is hit by the raycast
+        {
+            farCrossCanvas.GetComponent<Image>().color = Color.white;
+        }
     }
-
 
     //https://answers.unity.com/questions/799656/how-to-keep-an-object-within-the-camera-view.html
     void Clamp(Transform target) 
@@ -224,7 +262,6 @@ public class Player : MonoBehaviour
      
 
     }
-
 
     void HorizontalLean(Transform target, float axis, float leanLimit, float lerpTime)
     {
@@ -287,10 +324,9 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("crashed");
         updateHealth(-50f);
     }
-    void updateHealth(float damage)
+    public void updateHealth(float damage)
     {
 
         playerHealth += damage;

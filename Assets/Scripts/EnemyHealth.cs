@@ -5,13 +5,15 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
 
+    //Define the player object to aim at;
+    Transform player;
     public float currentHealth = 100f;
 
     public GameObject crashingFX;
     public GameObject impactFX;
 
     //fields for shooting at player
-    Transform enemyFirePoint;
+    public Transform enemyFirePoint;
     [SerializeField]
     GameObject missile;
     float fireRate;
@@ -20,22 +22,28 @@ public class EnemyHealth : MonoBehaviour
     {
         fireRate = 5f;
         nextFire = Time.time;
-        enemyFirePoint = this.gameObject.transform.GetChild(6);
+        player = GameObject.Find("PlayerCamParent/Player/PlayerModel").transform;
+        //enemyFirePoint = this.gameObject.transform.GetChild(6);
     }
 
     // Update is called once per frame
     void Update()
     {
-        FireGun();
+        //This checks if the player is "in range" of the enemy - using absolute value to make negatives easier
+        if (Mathf.Abs(player.position.z) - Mathf.Abs(transform.position.z) <= 200)
+        {
+            FireGun();
+        }
     }
 
     void FireGun()
     {
         if(Time.time > nextFire && currentHealth > 0)
         {
-            enemyFirePoint.LookAt(GameObject.Find("PlayerCamParent/Player/PlayerModel").transform);
+            enemyFirePoint.LookAt(player);
             Instantiate(missile, enemyFirePoint.position, enemyFirePoint.rotation);
             nextFire = Time.time + fireRate;
+            
         }
     }
 
@@ -48,7 +56,7 @@ public class EnemyHealth : MonoBehaviour
            if (currentHealth <= 0)
            {
             
-                if (gameObject.tag == "EnemyShip")
+                if (gameObject.tag == "Enemy")
                 {
                     gameObject.GetComponent<Rigidbody>().useGravity = true;
                     Instantiate(crashingFX, transform);

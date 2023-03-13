@@ -7,7 +7,7 @@ public class EnemyTurret : MonoBehaviour
 
     public float currentHealth = 100f;
     //fields for shooting at player
-    Transform enemyFirePoint;
+    public Transform enemyFirePoint;
     [SerializeField]
     GameObject missile;
     public GameObject explosionFX;
@@ -15,7 +15,7 @@ public class EnemyTurret : MonoBehaviour
     float nextFire = 0.0f;
     void Start()
     {
-        enemyFirePoint = gameObject.transform.GetChild(1);
+        //enemyFirePoint = gameObject.transform.GetChild(0);
     }
 
     // Update is called once per frame

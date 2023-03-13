@@ -10,7 +10,7 @@ public class BulletHit : MonoBehaviour
     void Start()
     {
         transform.Rotate(90, 0, 0);
-        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, 10000f));
+        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, 25000f));
         Destroy(gameObject, 5);
     }
 
@@ -24,7 +24,7 @@ public class BulletHit : MonoBehaviour
     {
        
         
-        if (collision.gameObject.tag == "EnemyShip")
+        if (collision.gameObject.tag == "Enemy")
         {
             EnemyHealth enemy = collision.gameObject.GetComponent<EnemyHealth>();
             enemy.TakeDamage(damage);
