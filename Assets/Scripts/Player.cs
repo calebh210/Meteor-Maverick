@@ -7,12 +7,17 @@ using UnityEngine.UI;
 
 
 //TODO:
-// 1. Fix crosshair/make crosshair more accuruate
-// 2. Make crosshair controls more fluid / switch to using WASD instead of mouse
-// 3. Make collision with terrain/enemies more like starfox (bounce off/phase through and take damage, doesn't mess with controls)
-// 4. Make enemies move and fire back
-// 5. Add UI Elements showing boost, missiles, and other features
-// 7. Add SFX to explosion https://freesound.org/people/derplayer/sounds/587186/
+//1. Finish Level 1 - Add More Enemies and Spawn Fields
+//1. a) Figure out how to do bossfight - maybe just play cutscene
+//2. Add some sound effects to missile impacts and other explosions
+//3. Create a main menu screen
+//4. Create a better UI showing health, missiles, boost, etc.
+//5. Create powerups for player to pick up
+//6. Create more levels.
+//7. Create death animation for player
+//8. Make missile lock work
+//9. Make indicator to show when enemy is hit  
+
 
 public class Player : MonoBehaviour
 {
@@ -232,7 +237,7 @@ public class Player : MonoBehaviour
 
 
 
-            if (hit.transform.tag == "Enemy")
+            if (hit.transform.tag == ("Enemy"))
             {
                 //lockedOn = true;
                 farCrossCanvas.GetComponent<Image>().color = Color.red;
@@ -291,14 +296,14 @@ public class Player : MonoBehaviour
         {
             //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, Time.deltaTime * 2f);
             //cam.transform.localPosition = new Vector3(0, 0, -6f);
-            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 3f;
+            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 20f;
 
         }
         else
         {
            //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 110, Time.deltaTime  * 2f);
            //cam.transform.localPosition = new Vector3(0, 0, -8f);
-            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 20f;
+            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 50f;
 
         }
     }
@@ -309,14 +314,14 @@ public class Player : MonoBehaviour
         {
             //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 120, Time.deltaTime);
             //cam.transform.localPosition = new Vector3(0,0,-12f);
-            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 40f;
+            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 90f;
 
         }
         else
         {
             //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 110, Time.deltaTime);
             //cam.transform.localPosition = new Vector3(0, 0, -8f);
-            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 20f;
+            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 50f;
 
         }
 

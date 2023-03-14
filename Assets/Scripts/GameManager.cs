@@ -19,4 +19,17 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    void Level1()
+    {
+
+    }
+    void Level2()
+    {
+
+    }
+    void Level3()
+    {
+
+    }
 }

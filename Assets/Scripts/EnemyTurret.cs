@@ -42,7 +42,7 @@ public class EnemyTurret : MonoBehaviour
         {
             GameObject explosion = Instantiate(explosionFX, transform.position, transform.rotation);
             Destroy(gameObject);
-            Destroy(explosion);
+            Destroy(explosion,3);
         }
     }
 

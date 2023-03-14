@@ -2,13 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletHit : MonoBehaviour
+public class LaserController : MonoBehaviour
 {
 
+    //Variable for the laser sound effect
+    private AudioSource laserSoundEffect;
+
+
     public float damage = -50f;
-    // Start is called before the first frame update
+  
     void Start()
     {
+        //Set the sound effect to the audio clip
+        laserSoundEffect = GetComponent<AudioSource>();
+        laserSoundEffect.Play();
+        //Set the initial rotation and force for the laser
         transform.Rotate(90, 0, 0);
         GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, 25000f));
         Destroy(gameObject, 5);
