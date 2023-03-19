@@ -426,9 +426,11 @@ GameObject:
   - component: {fileID: 5858969958955842436}
   - component: {fileID: 2731539192017409243}
   - component: {fileID: 1603697618813075643}
+  - component: {fileID: 1621860323}
+  - component: {fileID: 1621860324}
   m_Layer: 0
-  m_Name: Platform2_
-  m_TagString: Untagged
+  m_Name: WeakPoint4
+  m_TagString: BossWeakPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -498,6 +500,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1621860323
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417771076028589335}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6744244918479059446, guid: f5b5ce88bd6e93843b4459d8fb4ab3e5, type: 3}
+--- !u!114 &1621860324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417771076028589335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8682defa0c70b27438658d18aa115b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1841716027287006468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,9 +1035,11 @@ GameObject:
   - component: {fileID: 6761753129225370050}
   - component: {fileID: 5889498011086456135}
   - component: {fileID: 4581692040787378027}
+  - component: {fileID: 284701810}
+  - component: {fileID: 284701811}
   m_Layer: 0
-  m_Name: Platform2
-  m_TagString: Untagged
+  m_Name: WeakPoint3
+  m_TagString: BossWeakPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1079,6 +1109,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &284701810
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278912156246484322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3710652624261060222, guid: f5b5ce88bd6e93843b4459d8fb4ab3e5, type: 3}
+--- !u!114 &284701811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278912156246484322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8682defa0c70b27438658d18aa115b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3700660052769318740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,9 +1976,11 @@ GameObject:
   - component: {fileID: 4770153662102387770}
   - component: {fileID: 9047638856148944577}
   - component: {fileID: 2022846618498573770}
+  - component: {fileID: 1480534783}
+  - component: {fileID: 1480534784}
   m_Layer: 0
-  m_Name: Platform1_
-  m_TagString: Untagged
+  m_Name: WeakPoint2
+  m_TagString: BossWeakPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1992,6 +2050,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1480534783
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6947011067562575719}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5904755906135332254, guid: f5b5ce88bd6e93843b4459d8fb4ab3e5, type: 3}
+--- !u!114 &1480534784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6947011067562575719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8682defa0c70b27438658d18aa115b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7325621770618989202
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,9 +2170,11 @@ GameObject:
   - component: {fileID: 6870392344498066234}
   - component: {fileID: 6491096278719920455}
   - component: {fileID: 8161874780999607390}
+  - component: {fileID: 596551398}
+  - component: {fileID: 596551399}
   m_Layer: 0
-  m_Name: Platform1
-  m_TagString: Untagged
+  m_Name: WeakPoint1
+  m_TagString: BossWeakPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2158,6 +2244,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &596551398
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7373626416676564979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1919812241983488695, guid: f5b5ce88bd6e93843b4459d8fb4ab3e5, type: 3}
+--- !u!114 &596551399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7373626416676564979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8682defa0c70b27438658d18aa115b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7578819750492936224
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,9 +2362,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8769124421538482390}
+  - component: {fileID: 1656669613}
   m_Layer: 0
   m_Name: ScifiStation_3ds
-  m_TagString: Untagged
+  m_TagString: BossParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2303,6 +2416,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1656669613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8284899966312338028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca71588df3b9bf48a789efc08283ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8335717704005899314
 GameObject:
   m_ObjectHideFlags: 0

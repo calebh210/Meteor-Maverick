@@ -10,17 +10,45 @@ public class FreeMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = this.gameObject.transform.GetChild(1);
-        playerModel = player.GetChild(1);
+        player = this.gameObject.transform.GetChild(0);
+        playerModel = player.GetChild(0);
     }
 
-    // Update is called once per frame
+    // Update is called once per frames
     void Update()
     {
        
-        transform.position += new Vector3(0, 0, 10) * 2 * Time.deltaTime;
+        //This moves the playercam parent along its LOCAL rotation
+        transform.Translate(Vector3.forward * 50 * Time.deltaTime, Space.Self);
 
-        transform.rotation = playerModel.rotation;
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(playerModel.transform.position);
+
+        float horizontal = Input.GetAxis("Horizontal");
         
+
+        //TODO!!! TURN OFF CAMERA CLAMPING WHILE IN FREEMOVE! MAKES FREEMOVE FEEL MUCH BETTER
+
+
+        //The screen will only rotate if the player flies to the side
+        if(screenPos.x < 200 && horizontal < 0)
+        {
+            transform.Rotate(0, horizontal/2, 0);
+        }
+
+        if (screenPos.x > 600 && horizontal > 0)
+        {
+            transform.Rotate(0, horizontal/2, 0);
+        }
+
+        /* Vector3 newRotate = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + horizontal, transform.eulerAngles.z);
+         transform.eulerAngles = newRotate;*/
+
+
+        //Debug.Log(horizontal);
+
+
+
+
+
     }
 }

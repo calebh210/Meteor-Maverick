@@ -17,6 +17,7 @@ using UnityEngine.UI;
 //7. Create death animation for player
 //8. Make missile lock work
 //9. Make indicator to show when enemy is hit  
+//10. Add visual effects for boost/brake (change afterburner length)
 
 
 public class Player : MonoBehaviour
@@ -38,10 +39,14 @@ public class Player : MonoBehaviour
     UIController playerUI; 
     //setting up the player's health val
     public float playerHealth = 10000f;
+    private float abilityTime = 100f;
+    float abilityRechargeCooldown = 5.0f;
+    float abilityLastUsed = 0.0f;
+    int score = 0;
 
     public float fireRate = 0.15F;
     private float nextFire = 0.0F;
-    private int missileCount = 3;
+    private int missileCount = 300;
     private Vector3 lockOnCoordinates;
     private bool lockedOn;
     private bool missileFired = false;
@@ -70,6 +75,7 @@ public class Player : MonoBehaviour
         farCrosshair = this.gameObject.transform.GetChild(3);
         //Linking the playerUI to the UI script, look for ways to optimize this
         playerUI = GameObject.Find("UIDocument").GetComponent<UIController>();
+       
 
     }
   
@@ -166,6 +172,7 @@ public class Player : MonoBehaviour
         //yawLean(transform, horizontal, 15, 0.5f);
         VerticalLean(Model, -vertical, 40, 0.2f);
         crosshairLockOn();
+        abilityRecharge();
 
     }
 
@@ -200,7 +207,7 @@ public class Player : MonoBehaviour
         //Model.LookAt(closeCrosshair.transform);
 
         FirePoint.LookAt(closeCrosshair.transform);
-        Model.rotation = FirePoint.rotation;
+        //Model.rotation = FirePoint.rotation;
 
 
     }
@@ -288,15 +295,34 @@ public class Player : MonoBehaviour
         target.localEulerAngles = new Vector3(targetEulerAngels.x, Mathf.LerpAngle(targetEulerAngels.y, axis * leanLimit, lerpTime), targetEulerAngels.z);
     }
 
+    void abilityRecharge()
+    {
+        if(abilityLastUsed + abilityRechargeCooldown < Time.time)
+        {
+            if (abilityTime < 100f)
+            {
+                abilityTime += 0.2f;
+                playerUI.updateAbility(abilityTime);
+            }
+        }
+    }
 
     
     public void BrakeZoomIn(bool status)
     {
-        if (status)
+        if (status && abilityTime > 0)
         {
             //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, Time.deltaTime * 2f);
             //cam.transform.localPosition = new Vector3(0, 0, -6f);
+            
             gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 20f;
+
+          
+
+            abilityTime += -0.1f;
+            playerUI.updateAbility(abilityTime);
+            abilityLastUsed = Time.time;
+            
 
         }
         else
@@ -305,16 +331,24 @@ public class Player : MonoBehaviour
            //cam.transform.localPosition = new Vector3(0, 0, -8f);
             gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 50f;
 
+            
         }
     }
 
     public void BoostZoomOut(bool status)
     {
-        if (status)
+        if (status && abilityTime > 0)
         {
             //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 120, Time.deltaTime);
             //cam.transform.localPosition = new Vector3(0,0,-12f);
-            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 90f;
+            
+           gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 90f;
+
+           abilityTime += -0.1f;
+           playerUI.updateAbility(abilityTime);
+           abilityLastUsed = Time.time;
+
+           
 
         }
         else
@@ -322,6 +356,8 @@ public class Player : MonoBehaviour
             //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 110, Time.deltaTime);
             //cam.transform.localPosition = new Vector3(0, 0, -8f);
             gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 50f;
+
+           
 
         }
 

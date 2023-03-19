@@ -9,6 +9,8 @@ TagManager:
   - Terrain
   - HitPlane
   - EnemyTurret
+  - BossWeakPoint
+  - BossParent
   layers:
   - Default
   - TransparentFX

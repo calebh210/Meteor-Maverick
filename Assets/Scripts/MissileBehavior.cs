@@ -13,7 +13,8 @@ public class MissileBehavior : MonoBehaviour
     {
  
         transform.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, 5000f));
-       
+        Destroy(gameObject, 10);
+
     }
 
     // Update is called once per frame
@@ -24,9 +25,10 @@ public class MissileBehavior : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.transform.tag);
         GameObject missileHit = Instantiate(explosionFX, transform.position, transform.rotation);
         //Debug.Log(collision.gameObject.name);
-
+        //TODO: There's gotta be a way to clean this up...
         if(collision.gameObject.tag == "Enemy")
         {
             EnemyHealth enemy = collision.gameObject.GetComponent<EnemyHealth>();
@@ -42,6 +44,12 @@ public class MissileBehavior : MonoBehaviour
         {
             Player player = collision.gameObject.GetComponent<Player>();
             player.updateHealth(damage);
+        }
+
+        if(collision.gameObject.tag == "BossWeakPoint")
+        {
+            BossWeakpointController weakpoint = collision.gameObject.GetComponent<BossWeakpointController>();
+            weakpoint.takeDamage(damage);
         }
 
 
