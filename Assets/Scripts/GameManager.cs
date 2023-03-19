@@ -4,6 +4,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool gameOver = false;
+
+    public void PauseGame()
+    {
+
+    }
+
+    public void ResumeGame()
+    {
+
+    }
+
     public void EndGame()
     {
         if(gameOver == false)
