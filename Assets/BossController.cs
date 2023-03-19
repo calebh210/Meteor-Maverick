@@ -25,7 +25,7 @@ public class BossController : MonoBehaviour
 
         if(health <= 0)
         {
-            Debug.Log("Level Finished");
+            FindObjectOfType<GameManager>().LoadLevel3();
         }
     }
 }

@@ -302,7 +302,7 @@ public class Player : MonoBehaviour
         {
             if (abilityTime < 100f)
             {
-                abilityTime += 0.2f;
+                abilityTime += 0.25f;
                 playerUI.updateAbility(abilityTime);
             }
         }
@@ -320,7 +320,7 @@ public class Player : MonoBehaviour
 
           
 
-            abilityTime += -0.1f;
+            abilityTime += -0.25f;
             playerUI.updateAbility(abilityTime);
             abilityLastUsed = Time.time;
             
@@ -345,7 +345,7 @@ public class Player : MonoBehaviour
             
            gameObject.GetComponentInParent<Cinemachine.CinemachineDollyCart>().m_Speed = 90f;
 
-           abilityTime += -0.1f;
+           abilityTime += -0.25f;
            playerUI.updateAbility(abilityTime);
            abilityLastUsed = Time.time;
 

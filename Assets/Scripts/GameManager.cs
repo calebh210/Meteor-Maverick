@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
     {
 
     }
-    void Level3()
+    public void LoadLevel3()
     {
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
