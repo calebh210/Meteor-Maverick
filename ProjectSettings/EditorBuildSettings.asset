@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 2 - Ground Attack.unity
     guid: d77cfb61e55bf704c945bb4feee2490a
+  - enabled: 1
+    path: Assets/Scenes/Space Scene.unity
+    guid: e52308253fc3a724d8cf4dd251551490
   m_configObjects: {}
