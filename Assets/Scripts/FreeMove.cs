@@ -21,7 +21,7 @@ public class FreeMove : MonoBehaviour
         //This moves the playercam parent along its LOCAL rotation
         transform.Translate(Vector3.forward * 50 * Time.deltaTime, Space.Self);
 
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(playerModel.transform.position);
+        Vector3 screenPos = Camera.main.WorldToViewportPoint(playerModel.transform.position);
 
         float horizontal = Input.GetAxis("Horizontal");
         
@@ -30,12 +30,12 @@ public class FreeMove : MonoBehaviour
 
 
         //The screen will only rotate if the player flies to the side
-        if(screenPos.x < 200 && horizontal < 0)
+        if(screenPos.x < 0.2 && horizontal < 0)
         {
             transform.Rotate(0, horizontal/2, 0);
         }
 
-        if (screenPos.x > 600 && horizontal > 0)
+        if (screenPos.x > 0.8 && horizontal > 0)
         {
             transform.Rotate(0, horizontal/2, 0);
         }
