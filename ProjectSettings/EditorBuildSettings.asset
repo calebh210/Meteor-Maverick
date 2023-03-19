@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4e81b195ea3c55241b9b350db880dc49
+  - enabled: 1
+    path: Assets/Scenes/Level 2 - Ground Attack.unity
+    guid: d77cfb61e55bf704c945bb4feee2490a
   m_configObjects: {}

@@ -8,6 +8,9 @@ TagManager:
   - EnemyShip
   - Terrain
   - HitPlane
+  - EnemyTurret
+  - BossWeakPoint
+  - BossParent
   layers:
   - Default
   - TransparentFX
@@ -15,7 +18,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - HitPlane
   - 
   - 
   - 
