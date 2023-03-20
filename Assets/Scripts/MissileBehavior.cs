@@ -42,7 +42,7 @@ public class MissileBehavior : MonoBehaviour
 
         if(collision.gameObject.tag == "Player")
         {
-            Player player = collision.gameObject.GetComponent<Player>();
+            PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
             player.updateHealth(damage);
         }
 

@@ -185,10 +185,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2042308702302705502}
-  - component: {fileID: 2042308702302705498}
   - component: {fileID: 2042308702302705499}
   - component: {fileID: 2042308702302705500}
   - component: {fileID: 2042308702302705501}
+  - component: {fileID: 2042308702302705498}
+  - component: {fileID: 6307403122672032174}
+  - component: {fileID: 784835584691009725}
+  - component: {fileID: 5523369940603699361}
+  - component: {fileID: 7191064170179210836}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -215,25 +219,6 @@ Transform:
   m_Father: {fileID: 2042308702603512946}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2042308702302705498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042308702302705503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248ec6fe48450cf45a8f3b9e6368d974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  farCrossCanvas: {fileID: 0}
-  cam: {fileID: 0}
-  playerHealth: 10000
-  fireRate: 0.25
-  missile: {fileID: 1376118263806029483, guid: a011a35a459c8f7488f315560eacb63d, type: 3}
-  bullet: {fileID: 122648, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
-  Speed: 18
 --- !u!65 &2042308702302705499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -277,6 +262,72 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2042308702302705498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042308702302705503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36aa97e3406f6944287b61af0f5b7eca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 18
+--- !u!114 &6307403122672032174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042308702302705503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719e43b4434696242a1eefd1c200f35c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 10000
+--- !u!114 &784835584691009725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042308702302705503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc39b33181157214eb1d6d921f080ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5523369940603699361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042308702302705503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02c360c37b19394aa03d1e080912123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7191064170179210836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042308702302705503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e3710cc3846c741bea78351fa49cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.15
+  missile: {fileID: 0}
+  laser: {fileID: 0}
+  farCrossCanvas: {fileID: 0}
 --- !u!1 &2042308702603512949
 GameObject:
   m_ObjectHideFlags: 0
