@@ -39,13 +39,6 @@ public class LaserController : MonoBehaviour
 
         }
 
-        if (collision.gameObject.tag == "EnemyTurret")
-        {
-            EnemyTurret enemy = collision.gameObject.GetComponent<EnemyTurret>();
-            enemy.TakeDamage(damage);
-
-        }
-
         Destroy(gameObject);
        
     }

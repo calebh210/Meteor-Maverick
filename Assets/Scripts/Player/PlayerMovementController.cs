@@ -19,6 +19,7 @@ using UnityEngine.UI;
 //9. Make indicator to show when enemy is hit  
 //10. Add visual effects for boost/brake (change afterburner length)
 //11. Add a pause menu
+//12. Fix enemy friendly fire
 
 
 public class PlayerMovementController : MonoBehaviour

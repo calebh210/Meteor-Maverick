@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 789058256520800625}
   - component: {fileID: 789058256520800626}
   - component: {fileID: 789058256520800636}
+  - component: {fileID: 955494368660948414}
   m_Layer: 0
   m_Name: Luminaris Starship
   m_TagString: Enemy
@@ -239,10 +240,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cddc94d740e05954385e36d36d6d3b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionFX: {fileID: 3856863010434224238, guid: de80202ebb026d64795c44e2469873b3, type: 3}
+--- !u!114 &955494368660948414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789058255811917570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12fd0a816f23a6e4f9b9a9380b71f76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   currentHealth: 100
-  crashingFX: {fileID: 3176148380498346336, guid: bed965b16171c4d408f3255fdc002303, type: 3}
-  impactFX: {fileID: 3856863010434224238, guid: de80202ebb026d64795c44e2469873b3, type: 3}
-  missile: {fileID: 3226113787307056905, guid: b06825c9f77df1341943699f1e72c7e1, type: 3}
+  enemyFirePoint: {fileID: 789058256742771014}
+  missile: {fileID: 1376118263806029483, guid: a011a35a459c8f7488f315560eacb63d, type: 3}
 --- !u!1 &789058255811917572
 GameObject:
   m_ObjectHideFlags: 0
