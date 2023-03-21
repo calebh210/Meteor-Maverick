@@ -1,20 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+[System.Serializable] public class customIntEvent : UnityEvent<int> { }
 public class PlayerScore : MonoBehaviour
 {
     int score = 0;
-    UIController playerUI;
-
-    private void Start()
-    {
-        playerUI = GameObject.Find("UIDocument").GetComponent<UIController>();
-    }
+    public customIntEvent updateUIScore;
 
     public void UpdateScore(int points)
     {
         this.score += points;
-        playerUI.updateScoreboard(score);
+        updateUIScore.Invoke(score);
     }
 }

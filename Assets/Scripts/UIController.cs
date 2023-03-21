@@ -6,20 +6,20 @@ using UnityEngine.UIElements;
 public class UIController : MonoBehaviour
 {
 
-    public ProgressBar HealthBar;
-    public ProgressBar AbilityBar;
-    public Label Scoreboard;
+    private ProgressBar HealthBar;
+    private ProgressBar AbilityBar;
+    private Label Scoreboard;
     // Start is called before the first frame update
     void Start()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
 
-        HealthBar = root.Q<ProgressBar>("HealthBar");
-        AbilityBar = root.Q<ProgressBar>("AbilityBar");
-        Scoreboard = root.Q<Label>("scoreboard");
+        this.HealthBar = root.Q<ProgressBar>("HealthBar");
+        this.AbilityBar = root.Q<ProgressBar>("AbilityBar");
+        this.Scoreboard = root.Q<Label>("scoreboard");
        
     }
-
+    //look into events
     // Update is called once per frame
     void Update()
     {
