@@ -1,23 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField]
+    GameObject PlayerRailCart;
+    Cinemachine.CinemachineDollyCart dollyCart;
+    float pathProgress;
 
-    GameObject parent;
-    // Start is called before the first frame update
-    void Start()
+    public UnityEvent destroyFirstFreighter;
+    public UnityEvent secondSquadJumps;
+
+    private void Start()
     {
-        
+        dollyCart = PlayerRailCart.GetComponent<Cinemachine.CinemachineDollyCart>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(parent.GetComponent<Cinemachine.CinemachineDollyCart>().m_Position <= 3600)
-        {
+        pathProgress = dollyCart.m_Position;
 
+        if(pathProgress > 75)
+        {
+            destroyFirstFreighter.Invoke();
+        }
+        
+        if(pathProgress > 500)
+        {
+            secondSquadJumps.Invoke();
         }
     }
 }
