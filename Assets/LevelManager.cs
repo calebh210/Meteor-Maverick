@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
 
     public UnityEvent destroyFirstFreighter;
     public UnityEvent secondSquadJumps;
+    public UnityEvent destroySecondFreighter;
 
     private void Start()
     {
@@ -27,9 +28,14 @@ public class LevelManager : MonoBehaviour
             destroyFirstFreighter.Invoke();
         }
         
-        if(pathProgress > 500)
+        if(pathProgress > 600)
         {
             secondSquadJumps.Invoke();
+        }
+
+       if(pathProgress > 800)
+        {
+            destroySecondFreighter.Invoke();
         }
     }
 }
