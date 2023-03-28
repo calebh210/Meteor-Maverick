@@ -6,8 +6,12 @@ using UnityEngine.Events;
 public class PlayerHealth : MonoBehaviour
 {
     public customFloatEvent updateUIHealth;
-    public float playerHealth = 10000f;
+    public float playerHealth = 100f;
 
+    void Update() 
+    {
+        
+    }
     private void OnCollisionEnter(Collision collision)
     {
         updateHealth(-50f);

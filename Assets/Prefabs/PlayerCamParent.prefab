@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 2042308702236081739}
   - component: {fileID: 2042308702236081740}
   - component: {fileID: 2042308702236081741}
+  - component: {fileID: 212148210}
   m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -176,6 +177,66 @@ MonoBehaviour:
   target: {fileID: 2042308702302705502}
   offset: {x: 0, y: 0, z: 0}
   limits: {x: 6, y: 4}
+--- !u!114 &212148210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042308702236081743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 2042308702236081742}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 1
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &2042308702302705503
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,8 +291,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 1, z: 3.5732284}
+  m_Center: {x: 4.3142578e-10, y: 0, z: -0.33120275}
 --- !u!54 &2042308702302705500
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -290,7 +351,7 @@ MonoBehaviour:
   updateUIHealth:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8364247126821541285, guid: 2501b435802b56c42b98df42de209f53, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: updateHealth
         m_Mode: 0
@@ -318,7 +379,7 @@ MonoBehaviour:
   updateUIAbility:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8364247126821541285, guid: 2501b435802b56c42b98df42de209f53, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: updateAbility
         m_Mode: 0
@@ -345,7 +406,7 @@ MonoBehaviour:
   updateUIScore:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8364247126821541285, guid: 2501b435802b56c42b98df42de209f53, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: updateScoreboard
         m_Mode: 0
@@ -399,7 +460,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042308702603512949}
-  m_LocalRotation: {x: 0, y: -0.01336489, z: 0, w: 0.9999107}
+  m_LocalRotation: {x: 0, y: -0.013368754, z: 0, w: 0.99991065}
   m_LocalPosition: {x: 0, y: 22, z: -143.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -409,7 +470,7 @@ Transform:
   - {fileID: 2042308702177197447}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -1.532, z: 0}
 --- !u!114 &2042308702603512948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +486,7 @@ MonoBehaviour:
   m_Path: {fileID: 0}
   m_UpdateMethod: 0
   m_PositionUnits: 1
-  m_Speed: 50
+  m_Speed: 20
   m_Position: 0
 --- !u!114 &2042308702103353614
 MonoBehaviour:

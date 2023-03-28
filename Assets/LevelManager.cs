@@ -9,10 +9,13 @@ public class LevelManager : MonoBehaviour
     GameObject PlayerRailCart;
     Cinemachine.CinemachineDollyCart dollyCart;
     float pathProgress;
-
+    bool hasRun = false;
     public UnityEvent destroyFirstFreighter;
     public UnityEvent secondSquadJumps;
     public UnityEvent destroySecondFreighter;
+    public UnityEvent spawnFirstGroup;
+
+    
 
     private void Start()
     {
@@ -23,9 +26,10 @@ public class LevelManager : MonoBehaviour
     {
         pathProgress = dollyCart.m_Position;
 
-        if(pathProgress > 75)
+        if(pathProgress > 75 & hasRun == false )
         {
             destroyFirstFreighter.Invoke();
+            hasRun = true;
         }
         
         if(pathProgress > 600)
@@ -36,6 +40,11 @@ public class LevelManager : MonoBehaviour
        if(pathProgress > 800)
         {
             destroySecondFreighter.Invoke();
+        }
+
+        if (pathProgress > 1300)
+        {
+            spawnFirstGroup.Invoke();
         }
     }
 }
