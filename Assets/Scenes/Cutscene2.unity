@@ -411,8 +411,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335300763}
-  m_LocalRotation: {x: 0.23769623, y: -0.0073468057, z: 0.00097298063, w: 0.97131133}
-  m_LocalPosition: {x: -428.16473, y: -168.0135, z: 339.76855}
+  m_LocalRotation: {x: 0.17755713, y: -0.3784978, z: 0.07381437, w: 0.9054083}
+  m_LocalPosition: {x: -421.25317, y: -170.36897, z: 345.13177}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -591,8 +591,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404102135}
-  m_LocalRotation: {x: 0.23769623, y: -0.0073468057, z: 0.00097298063, w: 0.97131133}
-  m_LocalPosition: {x: -428.16473, y: -168.0135, z: 339.76855}
+  m_LocalRotation: {x: 0.19107611, y: -0.20296694, z: 0.040068947, w: 0.95952535}
+  m_LocalPosition: {x: -420.99084, y: -171.41885, z: 348.85257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 2 - Ground Attack
+  m_text: Level 3 - Atmospheric Assault
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -1114,7 +1114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1047492222347241968, guid: f2acf740e7a10804f8565d036fad10f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.58
+      value: 3.54
       objectReference: {fileID: 0}
     - target: {fileID: 1047492222347241968, guid: f2acf740e7a10804f8565d036fad10f8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1122,11 +1122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1047492222347241968, guid: f2acf740e7a10804f8565d036fad10f8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 1047492222347241968, guid: f2acf740e7a10804f8565d036fad10f8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.93458563
       objectReference: {fileID: 0}
     - target: {fileID: 1047492222347241968, guid: f2acf740e7a10804f8565d036fad10f8, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1134,7 +1134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1047492222347241968, guid: f2acf740e7a10804f8565d036fad10f8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0.35573825
       objectReference: {fileID: 0}
     - target: {fileID: 1047492222347241968, guid: f2acf740e7a10804f8565d036fad10f8, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1146,7 +1146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1047492222347241968, guid: f2acf740e7a10804f8565d036fad10f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 41.677
       objectReference: {fileID: 0}
     - target: {fileID: 1047492222347241968, guid: f2acf740e7a10804f8565d036fad10f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1473,12 +1473,12 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -5187790560898828033, guid: abd42b657222b144d99b2e91770c7372, type: 2}
-    value: {fileID: 1092032779}
   - key: {fileID: -3167879142167128061, guid: abd42b657222b144d99b2e91770c7372, type: 2}
     value: {fileID: 404102139}
   - key: {fileID: 5044608517852324755, guid: abd42b657222b144d99b2e91770c7372, type: 2}
     value: {fileID: 897770204}
+  - key: {fileID: 3933077014095428329, guid: abd42b657222b144d99b2e91770c7372, type: 2}
+    value: {fileID: 1092032779}
   m_ExposedReferences:
     m_References:
     - d9198576aa2792845947f5ac6383d7fc: {fileID: 335300764}
@@ -1500,6 +1500,7 @@ GameObject:
   - component: {fileID: 1271168965}
   - component: {fileID: 1271168964}
   - component: {fileID: 1271168963}
+  - component: {fileID: 1271168967}
   m_Layer: 0
   m_Name: Planet2
   m_TagString: Untagged
@@ -1540,7 +1541,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 15cfc49f3cbaa97459d74403fc2d1873, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1578,13 +1579,33 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271168962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.46, y: 0.5, z: 2.57}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 7.82, y: 0.5, z: 5.08}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1271168967
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271168962}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 14ce6059c5d1f2742a1397c452805975, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!4 &1638938309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3097115070351098118, guid: 75fb29c9b8cdf8f4682a3217f61fc3d8, type: 3}
@@ -1657,8 +1678,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791964863}
-  m_LocalRotation: {x: 0.22619563, y: 0.23534077, z: -0.05723384, w: 0.9434906}
-  m_LocalPosition: {x: -428.02008, y: -171.97037, z: 344.78238}
+  m_LocalRotation: {x: 0.19107611, y: -0.20296694, z: 0.040068947, w: 0.95952535}
+  m_LocalPosition: {x: -420.99084, y: -171.41885, z: 348.85257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

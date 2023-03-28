@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 4e81b195ea3c55241b9b350db880dc49
   - enabled: 1
+    path: Assets/Scenes/Level 1 - Defend the Fleet!.unity
+    guid: a0c3208852e6c5d4db6fa6911ec5de3d
+  - enabled: 1
+    path: Assets/Scenes/Cutscene1.unity
+    guid: de3ad0e3e0e2b3344ba8a0c76b9b57c3
+  - enabled: 1
     path: Assets/Scenes/Level 2 - Ground Attack.unity
     guid: d77cfb61e55bf704c945bb4feee2490a
   - enabled: 1
