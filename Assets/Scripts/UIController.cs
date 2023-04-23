@@ -39,6 +39,7 @@ public class UIController : MonoBehaviour
     public void updateFleetHealth(float health)
     {
         FleetHealth.fillAmount = health / 100;
+
     }
         
 

@@ -18,5 +18,11 @@ public class DeleteEnemies : MonoBehaviour
             
 
         }
+
+        if(fleetHealth <= 0)
+        {
+            //Add some dialogue about failing here
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 }

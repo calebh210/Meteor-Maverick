@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    float currentHealth = 100f;
+    public float currentHealth = 100f;
     public GameObject explosionFX;
 
     public void TakeDamage(float damageTaken)
