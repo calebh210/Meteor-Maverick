@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
     public UnityEvent spawnSecondGroup;
     public UnityEvent spawnThirdGroup;
     public UnityEvent spawnFourthGroup;
+    public UnityEvent showFinishingText;
 
 
 
@@ -67,9 +68,24 @@ public class LevelManager : MonoBehaviour
             spawnedDueler = true;
         }
 
+        if(pathProgress > 3100)
+        {
+            spawnThirdGroup.Invoke();
+        }
+
+        if(pathProgress > 3700)
+        {
+            spawnFourthGroup.Invoke();
+        }
+
         if(pathProgress > 5100)
         {
             dollyCart.m_Speed = 0;
+        }
+
+        if(pathProgress > 4300)
+        {
+            showFinishingText.Invoke();
         }
     }
 }

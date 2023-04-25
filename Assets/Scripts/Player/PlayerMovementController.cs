@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 //THIS VIDEO WAS A BIG HELP https://www.youtube.com/watch?v=JVbr7osMYTo
@@ -24,6 +25,9 @@ using UnityEngine.UI;
 
 public class PlayerMovementController : MonoBehaviour
 {
+
+    private PlayerStates.State state;
+
     private Transform Model;
     private Transform FirePoint;
 
@@ -50,7 +54,9 @@ public class PlayerMovementController : MonoBehaviour
         FirePoint = this.gameObject.transform.GetChild(1);
         closeCrosshair = this.gameObject.transform.GetChild(2);
         farCrosshair = this.gameObject.transform.GetChild(3);
-      
+
+        state = new PlayerStates.Idle(gameObject);
+
     }
   
     void Update()
@@ -95,8 +101,9 @@ public class PlayerMovementController : MonoBehaviour
         //Option to turn on yaw pitching, looks mid
         //yawLean(transform, horizontal, 15, 0.5f);
         VerticalLean(Model, -vertical, 40, 0.2f);
-       
 
+
+        HandleNewState(state.OnUpdate(), state);
     }
 
     private void LateUpdate()
@@ -175,6 +182,15 @@ public class PlayerMovementController : MonoBehaviour
     {
         Vector3 targetEulerAngels = target.localEulerAngles;
         target.localEulerAngles = new Vector3(targetEulerAngels.x, Mathf.LerpAngle(targetEulerAngels.y, axis * leanLimit, lerpTime), targetEulerAngels.z);
+    }
+
+    void HandleNewState(PlayerStates.State newState, PlayerStates.State oldState)
+    {
+        if (newState != oldState)
+        {
+            state = newState;
+            state.OnEnter();
+        }
     }
 
 }
