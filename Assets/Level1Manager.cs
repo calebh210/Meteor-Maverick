@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LevelManager : MonoBehaviour
+public class Level1Manager : MonoBehaviour
 {
     [SerializeField]
     GameObject PlayerRailCart;

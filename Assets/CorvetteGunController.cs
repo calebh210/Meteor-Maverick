@@ -7,7 +7,7 @@ public class CorvetteGunController : MonoBehaviour
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Missile")
+        if (collision.gameObject.tag == "Missile")
         {
             FindObjectOfType<GameManager>().LoadNextLevel();
         }
