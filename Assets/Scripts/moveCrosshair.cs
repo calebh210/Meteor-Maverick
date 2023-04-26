@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class moveCrosshair : MonoBehaviour
 {
-    public Vector2 crossLimits = new Vector2(2, 4);
-    public Camera cam;
-    public Transform FirePoint;
+    Camera cam;
     public GameObject crossPos;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        cam = Camera.main;
     }
 
     // Update is called once per frame

@@ -194,6 +194,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCamParent
       objectReference: {fileID: 0}
+    - target: {fileID: 7191064170179210836, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 122648, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
+    - target: {fileID: 7191064170179210836, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
+      propertyPath: missile
+      value: 
+      objectReference: {fileID: 1376118263806029483, guid: a011a35a459c8f7488f315560eacb63d, type: 3}
+    - target: {fileID: 7191064170179210836, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
+      propertyPath: farCrossCanvas
+      value: 
+      objectReference: {fileID: 1525314161}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
 --- !u!1001 &202956489

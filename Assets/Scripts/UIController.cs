@@ -1,26 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
-
-    public ProgressBar HealthBar;
-    public ProgressBar AbilityBar;
-    public Label Scoreboard;
-    // Start is called before the first frame update
-    void Start()
-    {
-        var root = GetComponent<UIDocument>().rootVisualElement;
-
-        HealthBar = root.Q<ProgressBar>("HealthBar");
-        AbilityBar = root.Q<ProgressBar>("AbilityBar");
-        Scoreboard = root.Q<Label>("scoreboard");
-       
-    }
-
-    // Update is called once per frame
+    [SerializeField]
+    public Image HealthBar;
+    [SerializeField]
+    public Image AbilityBar;
+    [SerializeField]
+    public TextMeshProUGUI Score;
+    [SerializeField]
+    public Image FleetHealth;
+  
     void Update()
     {
         
@@ -28,17 +22,24 @@ public class UIController : MonoBehaviour
 
     public void updateHealth(float healthRemaining)
     {
-        HealthBar.value = healthRemaining;
+        //HealthBar.value = healthRemaining;
+        HealthBar.fillAmount = healthRemaining / 100f; 
     }
 
     public void updateAbility(float time)
     {
-        AbilityBar.value = time;
+        AbilityBar.fillAmount = time / 100f;
     }
 
     public void updateScoreboard(int score)
     {
-        Scoreboard.text = score.ToString();
+        Score.text = score.ToString();
+    }
+
+    public void updateFleetHealth(float health)
+    {
+        FleetHealth.fillAmount = health / 100;
+
     }
         
 

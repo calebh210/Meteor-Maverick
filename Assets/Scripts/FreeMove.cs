@@ -30,12 +30,12 @@ public class FreeMove : MonoBehaviour
 
 
         //The screen will only rotate if the player flies to the side
-        if(screenPos.x < 0.2 && horizontal < 0)
+        if(screenPos.x < 0.4 && horizontal < 0)
         {
             transform.Rotate(0, horizontal/2, 0);
         }
 
-        if (screenPos.x > 0.8 && horizontal > 0)
+        if (screenPos.x > 0.6 && horizontal > 0)
         {
             transform.Rotate(0, horizontal/2, 0);
         }

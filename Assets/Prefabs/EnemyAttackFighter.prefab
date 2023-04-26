@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 986979574587779276}
   - component: {fileID: 2622510652996973744}
   - component: {fileID: 4453643551762371143}
+  - component: {fileID: 6727985002830531040}
   m_Layer: 0
   m_Name: EnemyAttackFighter
   m_TagString: Enemy
@@ -115,11 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cddc94d740e05954385e36d36d6d3b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  crashingFX: {fileID: 3176148380498346336, guid: bed965b16171c4d408f3255fdc002303, type: 3}
-  impactFX: {fileID: 3856863010434224238, guid: de80202ebb026d64795c44e2469873b3, type: 3}
-  enemyFirePoint: {fileID: 4863885112530101222}
-  missile: {fileID: 1376118263806029483, guid: a011a35a459c8f7488f315560eacb63d, type: 3}
+  explosionFX: {fileID: 3856863010434224238, guid: de80202ebb026d64795c44e2469873b3, type: 3}
 --- !u!54 &4453643551762371143
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,6 +133,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6727985002830531040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499775770561453704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12fd0a816f23a6e4f9b9a9380b71f76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 100
+  enemyFirePoint: {fileID: 4863885112530101222}
+  missile: {fileID: 1376118263806029483, guid: a011a35a459c8f7488f315560eacb63d, type: 3}
 --- !u!1 &8439272182905849059
 GameObject:
   m_ObjectHideFlags: 0

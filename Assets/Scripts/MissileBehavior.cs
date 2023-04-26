@@ -29,21 +29,10 @@ public class MissileBehavior : MonoBehaviour
         GameObject missileHit = Instantiate(explosionFX, transform.position, transform.rotation);
         //Debug.Log(collision.gameObject.name);
         //TODO: There's gotta be a way to clean this up...
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             EnemyHealth enemy = collision.gameObject.GetComponent<EnemyHealth>();
             enemy.TakeDamage(damage);
-        }
-        if (collision.gameObject.tag == "EnemyTurret")
-        {
-            EnemyTurret enemy = collision.gameObject.GetComponent<EnemyTurret>();
-            enemy.TakeDamage(damage);
-        }
-
-        if(collision.gameObject.tag == "Player")
-        {
-            Player player = collision.gameObject.GetComponent<Player>();
-            player.updateHealth(damage);
         }
 
         if(collision.gameObject.tag == "BossWeakPoint")

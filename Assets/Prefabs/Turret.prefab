@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7088224473714172132}
   - component: {fileID: 7088224473714172133}
   - component: {fileID: 7088224473714172136}
+  - component: {fileID: 864136760635303150}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Enemy
@@ -68,7 +69,6 @@ MonoBehaviour:
   currentHealth: 100
   enemyFirePoint: {fileID: 7088224475486718647}
   missile: {fileID: 1376118263806029483, guid: a011a35a459c8f7488f315560eacb63d, type: 3}
-  explosionFX: {fileID: 3856863010434224238, guid: de80202ebb026d64795c44e2469873b3, type: 3}
 --- !u!64 &7088224473714172133
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -96,6 +96,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 10, z: 5}
   m_Center: {x: 0, y: 3, z: 0}
+--- !u!114 &864136760635303150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7088224473714172134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cddc94d740e05954385e36d36d6d3b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionFX: {fileID: 3856863010434224238, guid: de80202ebb026d64795c44e2469873b3, type: 3}
 --- !u!1 &7088224474211121760
 GameObject:
   m_ObjectHideFlags: 0

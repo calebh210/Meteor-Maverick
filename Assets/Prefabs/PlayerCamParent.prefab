@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 2042308702236081739}
   - component: {fileID: 2042308702236081740}
   - component: {fileID: 2042308702236081741}
+  - component: {fileID: 212148210}
   m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -176,6 +177,66 @@ MonoBehaviour:
   target: {fileID: 2042308702302705502}
   offset: {x: 0, y: 0, z: 0}
   limits: {x: 6, y: 4}
+--- !u!114 &212148210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042308702236081743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 2042308702236081742}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 1
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &2042308702302705503
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,10 +246,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2042308702302705502}
-  - component: {fileID: 2042308702302705498}
   - component: {fileID: 2042308702302705499}
   - component: {fileID: 2042308702302705500}
   - component: {fileID: 2042308702302705501}
+  - component: {fileID: 2042308702302705498}
+  - component: {fileID: 6307403122672032174}
+  - component: {fileID: 784835584691009725}
+  - component: {fileID: 5523369940603699361}
+  - component: {fileID: 7191064170179210836}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -215,25 +280,6 @@ Transform:
   m_Father: {fileID: 2042308702603512946}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2042308702302705498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042308702302705503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248ec6fe48450cf45a8f3b9e6368d974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  farCrossCanvas: {fileID: 0}
-  cam: {fileID: 0}
-  playerHealth: 10000
-  fireRate: 0.25
-  missile: {fileID: 1376118263806029483, guid: a011a35a459c8f7488f315560eacb63d, type: 3}
-  bullet: {fileID: 122648, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
-  Speed: 18
 --- !u!65 &2042308702302705499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -245,8 +291,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 1, z: 3.5732284}
+  m_Center: {x: 4.3142578e-10, y: 0, z: -0.33120275}
 --- !u!54 &2042308702302705500
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -277,6 +323,106 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2042308702302705498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042308702302705503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36aa97e3406f6944287b61af0f5b7eca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 18
+--- !u!114 &6307403122672032174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042308702302705503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719e43b4434696242a1eefd1c200f35c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateUIHealth:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: updateHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  playerHealth: 10000
+--- !u!114 &784835584691009725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042308702302705503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc39b33181157214eb1d6d921f080ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpdateUI:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityTime: 100
+--- !u!114 &5523369940603699361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042308702302705503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02c360c37b19394aa03d1e080912123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateUIScore:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: updateScoreboard
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7191064170179210836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042308702302705503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e3710cc3846c741bea78351fa49cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.15
+  missile: {fileID: 1376118263806029483, guid: a011a35a459c8f7488f315560eacb63d, type: 3}
+  laser: {fileID: 122648, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
+  farCrossCanvas: {fileID: 0}
 --- !u!1 &2042308702603512949
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +433,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2042308702603512946}
   - component: {fileID: 2042308702603512948}
-  - component: {fileID: 2042308702103353614}
   - component: {fileID: 2042308702103353613}
   m_Layer: 2
   m_Name: PlayerCamParent
@@ -303,7 +448,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042308702603512949}
-  m_LocalRotation: {x: 0, y: -0.01336489, z: 0, w: 0.9999107}
+  m_LocalRotation: {x: 0, y: -0.013368754, z: 0, w: 0.99991065}
   m_LocalPosition: {x: 0, y: 22, z: -143.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -313,7 +458,7 @@ Transform:
   - {fileID: 2042308702177197447}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -1.532, z: 0}
 --- !u!114 &2042308702603512948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,21 +474,8 @@ MonoBehaviour:
   m_Path: {fileID: 0}
   m_UpdateMethod: 0
   m_PositionUnits: 1
-  m_Speed: 50
+  m_Speed: 20
   m_Position: 0
---- !u!114 &2042308702103353614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042308702603512949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d887e339c47e2a74ba6792769908f29b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossText: {fileID: 0}
 --- !u!114 &2042308702103353613
 MonoBehaviour:
   m_ObjectHideFlags: 0

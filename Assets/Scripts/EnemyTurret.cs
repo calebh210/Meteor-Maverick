@@ -10,7 +10,6 @@ public class EnemyTurret : MonoBehaviour
     public Transform enemyFirePoint;
     [SerializeField]
     GameObject missile;
-    public GameObject explosionFX;
     float fireRate = 10f;
     float nextFire = 0.0f;
     void Start()
@@ -31,18 +30,6 @@ public class EnemyTurret : MonoBehaviour
             enemyFirePoint.LookAt(GameObject.Find("PlayerCamParent/Player/PlayerModel").transform);
             Instantiate(missile, enemyFirePoint.position, enemyFirePoint.rotation);
             nextFire = Time.time + fireRate;
-        }
-    }
-
-    public void TakeDamage(float damage)
-    {
-        currentHealth += damage; 
-
-        if(currentHealth <= 0)
-        {
-            GameObject explosion = Instantiate(explosionFX, transform.position, transform.rotation);
-            Destroy(gameObject);
-            Destroy(explosion,3);
         }
     }
 
