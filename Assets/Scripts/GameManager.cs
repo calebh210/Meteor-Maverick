@@ -4,15 +4,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool gameOver = false;
-
-    public void PauseGame()
+    private GameStates.State GameState;
+    
+    public void Start()
     {
-
+        GameState = new GameStates.PlayState();
+        GameState.OnEnter();
     }
 
-    public void ResumeGame()
+    public void Update()
     {
-
+        HandleNewState(GameState.OnUpdate(), GameState);
     }
 
     public void EndGame()
@@ -43,4 +45,14 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    void HandleNewState(GameStates.State newState, GameStates.State oldState)
+    {
+        if (newState != oldState)
+        {
+            GameState = newState;
+            GameState.OnEnter();
+        }
+    }
+
 }
