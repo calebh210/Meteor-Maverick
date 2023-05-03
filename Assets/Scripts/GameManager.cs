@@ -5,10 +5,14 @@ public class GameManager : MonoBehaviour
 {
     bool gameOver = false;
     private GameStates.State GameState;
+
+
+    [SerializeField] //Adding the pause menu instance
+    GameObject PauseMenu;
     
     public void Start()
     {
-        GameState = new GameStates.PlayState();
+        GameState = new GameStates.PlayState(PauseMenu);
         GameState.OnEnter();
     }
 
@@ -33,14 +37,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void Level1()
-    {
-
-    }
-    void Level2()
-    {
-
-    }
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

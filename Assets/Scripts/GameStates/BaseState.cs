@@ -16,11 +16,11 @@ namespace GameStates
         public abstract class BaseState : State
         {
 
-            protected GameObject pauseMenu;
-
-            public BaseState()
+            protected GameObject PauseMenu;
+           
+            public BaseState(GameObject PauseMenu)
             {
-                this.pauseMenu = GameObject.Find("/Canvas/PauseMenu");
+               this.PauseMenu = PauseMenu;
             }
 
             public virtual void OnEnter()

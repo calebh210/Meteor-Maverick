@@ -6,24 +6,27 @@ using System.Text;
 using System.Threading.Tasks;
 using GameStates.PlayerStates;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GameStates
 {
     public class PlayState : BaseState
     {
-        public PlayState() : base() { }
+        public UnityEvent HideMenu;
+        public PlayState(GameObject PauseMenu) : base(PauseMenu) { }
 
         public override void OnEnter()
         {
             Time.timeScale = 1f;
-            pauseMenu.SetActive(false);
+            PauseMenu.SetActive(false);
+            
         }
 
         public override State OnUpdate()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                return new PauseState();
+                return new PauseState(PauseMenu);
             }
 
             return this;
