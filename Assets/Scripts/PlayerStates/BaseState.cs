@@ -9,8 +9,6 @@ namespace PlayerStates
     {
 
         protected GameObject player;
-        protected PlayerHealth healthController;
-        protected PlayerMovementController playerController;
         protected PlayerAbilities playerAbilities;
         protected Cinemachine.CinemachineDollyCart dollyCart;
         protected Camera cam;
@@ -18,8 +16,6 @@ namespace PlayerStates
         public BaseState(GameObject player)
         {
             this.player = player;
-            this.healthController = player.GetComponent<PlayerHealth>();
-            this.playerController = player.GetComponent<PlayerMovementController>();
             this.playerAbilities = player.GetComponent<PlayerAbilities>();
             this.dollyCart = player.GetComponentInParent<Cinemachine.CinemachineDollyCart>();
             this.cam = Camera.main; 
