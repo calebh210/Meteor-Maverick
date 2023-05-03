@@ -4,15 +4,21 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool gameOver = false;
+    private GameStates.State GameState;
 
-    public void PauseGame()
+
+    [SerializeField] //Adding the pause menu instance
+    GameObject PauseMenu;
+    
+    public void Start()
     {
-
+        GameState = new GameStates.PlayState(PauseMenu);
+        GameState.OnEnter();
     }
 
-    public void ResumeGame()
+    public void Update()
     {
-
+        HandleNewState(GameState.OnUpdate(), GameState);
     }
 
     public void EndGame()
@@ -31,16 +37,18 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void Level1()
-    {
-
-    }
-    void Level2()
-    {
-
-    }
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    void HandleNewState(GameStates.State newState, GameStates.State oldState)
+    {
+        if (newState != oldState)
+        {
+            GameState = newState;
+            GameState.OnEnter();
+        }
+    }
+
 }
