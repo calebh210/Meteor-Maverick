@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
+// fix bug with flashing dialogue box
 public class Level2Manager : MonoBehaviour
 {
     [SerializeField]

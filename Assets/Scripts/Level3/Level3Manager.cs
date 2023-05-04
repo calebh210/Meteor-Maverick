@@ -22,12 +22,12 @@ public class Level3Manager : MonoBehaviour
     void Update()
     {
         pathProgress = dollyCart.m_Position;
-        if (pathProgress >= 10 && DuelerSpawned == false)
+       /* if (pathProgress >= 10 && DuelerSpawned == false)
         {
             var newDuelingFighter = Instantiate(DuelingFighter, EnemySpawnPoint.transform.position, EnemySpawnPoint.transform.rotation);
             newDuelingFighter.transform.parent = EnemySpawnPoint.transform;
             DuelerSpawned = true;
-        }
+        }*/
        
     }
 }
