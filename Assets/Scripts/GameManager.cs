@@ -1,18 +1,28 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
+    [System.Serializable] public class customIntEvent : UnityEvent<int> { }
     bool gameOver = false;
     private GameStates.State GameState;
-    public UnityEvent saveScore; // Save score right before changing scenes
+
+    //Scoring vars
+    int score = 0;
+    public customIntEvent updateUIScore;
 
     [SerializeField] //Adding the pause menu instance
     GameObject PauseMenu;
     
     public void Start()
     {
+        //get the score from prefs
+        score = PlayerPrefs.GetInt("score");
+        UpdateScore(score);
+
+        //Set the default state
         GameState = new GameStates.PlayState(PauseMenu);
         GameState.OnEnter();
     }
@@ -40,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        saveScore.Invoke();
+        SaveScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -51,6 +61,19 @@ public class GameManager : MonoBehaviour
             GameState = newState;
             GameState.OnEnter();
         }
+    }
+
+    //Below are all of the scoring functions
+
+    public void SaveScore()
+    {
+        PlayerPrefs.SetInt("score", score);
+    }
+
+    public void UpdateScore(int points)
+    {
+        this.score += points;
+        updateUIScore.Invoke(score);
     }
 
 }

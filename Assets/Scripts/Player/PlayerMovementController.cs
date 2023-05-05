@@ -32,13 +32,10 @@ public class PlayerMovementController : MonoBehaviour
     private Transform FirePoint;
 
     private Transform closeCrosshair;
-    private Vector3 closeCrosshairDefault = new Vector3(0, 0, 10);
+    private Vector3 closeCrosshairDefault = new Vector3(0, 0, 30); //location for the crosshair to return to
     private Transform farCrosshair;
 
     Camera cam;
-
-    [Header("Parameters")]
-    public float Speed = 18f;
   
     // Start is called before the first frame update
     void Start()
@@ -96,7 +93,7 @@ public class PlayerMovementController : MonoBehaviour
 
         }
 
-        Move(horizontal, vertical, 10);
+        Move(horizontal, vertical, 20);
         HorizontalLean(Model, horizontal, 60, 0.2f);
         //Option to turn on yaw pitching, looks mid
         //yawLean(transform, horizontal, 15, 0.5f);

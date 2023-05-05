@@ -7,6 +7,8 @@ public class EnemyHealth : MonoBehaviour
     public float currentHealth = 100f;
     public GameObject explosionFX;
 
+    private int points = 50;
+
     public void TakeDamage(float damageTaken)
     {
 
@@ -14,9 +16,12 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            FindObjectOfType<GameManager>().UpdateScore(points);
             GameObject boom = Instantiate(explosionFX, transform.position, transform.rotation);
             Destroy(gameObject);
             Destroy(boom, 2);
+
+
         }
 
     }

@@ -439,6 +439,46 @@ PrefabInstance:
       propertyPath: PauseMenu
       value: 
       objectReference: {fileID: 505143430}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: addToScore.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: addToScore.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: addToScore.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1555537203}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: updateScoreboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 759996426837446518, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -805,31 +845,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042308702603512946, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10530.548
+      value: -9274.27
       objectReference: {fileID: 0}
     - target: {fileID: 2042308702603512946, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3148.206
+      value: 2076.8667
       objectReference: {fileID: 0}
     - target: {fileID: 2042308702603512946, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3605.7197
+      value: 4864.75
       objectReference: {fileID: 0}
     - target: {fileID: 2042308702603512946, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8995231
+      value: 0.88857585
       objectReference: {fileID: 0}
     - target: {fileID: 2042308702603512946, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.24706295
+      value: 0.24389108
       objectReference: {fileID: 0}
     - target: {fileID: 2042308702603512946, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.33978042
+      value: 0.37275222
       objectReference: {fileID: 0}
     - target: {fileID: 2042308702603512946, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.11986451
+      value: -0.109571405
       objectReference: {fileID: 0}
     - target: {fileID: 2042308702603512946, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -875,7 +915,8 @@ PrefabInstance:
       propertyPath: farCrossCanvas
       value: 
       objectReference: {fileID: 535812838}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5523369940603699361, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
 --- !u!1001 &1491955461
 PrefabInstance:
@@ -1057,15 +1098,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Resolution: 60
+  m_Resolution: 100
   m_Appearance:
     pathColor: {r: 0, g: 1, b: 0, a: 1}
     inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     width: 0.4
   m_Looped: 0
   m_Waypoints:
-  - position: {x: -236.0776, y: 970.77313, z: 1830.4293}
-    roll: 0
   - position: {x: -272.8688, y: 909.7322, z: 3905.5388}
     roll: 0
   - position: {x: -303.24557, y: 1011.33246, z: 11556.902}

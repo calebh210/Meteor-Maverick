@@ -116,7 +116,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cddc94d740e05954385e36d36d6d3b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 100
   explosionFX: {fileID: 3856863010434224238, guid: de80202ebb026d64795c44e2469873b3, type: 3}
+  addToScore:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1182811354758914, guid: 6fcc382533eeddd4cb59b9e20acca545, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &4453643551762371143
 Rigidbody:
   m_ObjectHideFlags: 0
