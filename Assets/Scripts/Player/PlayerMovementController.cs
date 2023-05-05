@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 
-//THIS VIDEO WAS A BIG HELP https://www.youtube.com/watch?v=JVbr7osMYTo
+
 
 
 //TODO:
@@ -121,7 +121,7 @@ public class PlayerMovementController : MonoBehaviour
 
         if (x == 0f && y == 0f)
         {
-            closeCrosshair.localPosition = Vector3.Lerp(closeCrosshair.localPosition, closeCrosshairDefault, 3 * Time.deltaTime);
+            closeCrosshair.localPosition = Vector3.Lerp(closeCrosshair.localPosition, closeCrosshairDefault, 2 * Time.deltaTime);
             //I commented this line out because I didn't know what it was doing and it fixed the dolly track bug.
             //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * 1f);
         }
@@ -130,7 +130,7 @@ public class PlayerMovementController : MonoBehaviour
         lookPos.y = 0;
         var rotation = Quaternion.LookRotation(lookPos);
 
-        Model.rotation = Quaternion.Slerp(Model.transform.rotation, rotation, Time.deltaTime * 2.75f);
+        //Model.rotation = Quaternion.Slerp(Model.transform.rotation, rotation, Time.deltaTime * 2.75f);
 
         //transform.LookAt(closeCrosshair.transform);
 
@@ -155,7 +155,7 @@ public class PlayerMovementController : MonoBehaviour
     }
 
 
-    //https://answers.unity.com/questions/799656/how-to-keep-an-object-within-the-camera-view.html
+    // Clamp function taken from https://answers.unity.com/questions/799656/how-to-keep-an-object-within-the-camera-view.html
     void Clamp(Transform target) 
     {
 
@@ -166,6 +166,8 @@ public class PlayerMovementController : MonoBehaviour
 
     }
 
+
+    //Leaning function code adapted from code seen in this video https://www.youtube.com/watch?v=JVbr7osMYTo
     void HorizontalLean(Transform target, float axis, float leanLimit, float lerpTime)
     {
         Vector3 targetEulerAngels = target.localEulerAngles;

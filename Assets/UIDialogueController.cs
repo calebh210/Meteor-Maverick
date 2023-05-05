@@ -11,7 +11,7 @@ public class UIDialogueController : MonoBehaviour
     GameObject finishingText;
 
     [SerializeField]
-    public GameObject fleetHealthBar;
+    public GameObject objHealthBar;
 
 
     public void showStartDialogue()
@@ -30,7 +30,7 @@ public class UIDialogueController : MonoBehaviour
         introText.SetActive(true);
         yield return new WaitForSeconds(3.0f);
         introText.SetActive(false);
-        fleetHealthBar.SetActive(true);
+        objHealthBar.SetActive(true);
     }
 
     IEnumerator finishingDialogue()
