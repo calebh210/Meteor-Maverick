@@ -15,18 +15,24 @@ EditorBuildSettings:
     path: Assets/Scenes/Cutscene - Level 1 Closer.unity
     guid: ce5bbea895aa5e64f8fa3ea070282c07
   - enabled: 1
-    path: Assets/Scenes/Cutscene1.unity
+    path: Assets/Scenes/TransitionCutscene1.unity
     guid: de3ad0e3e0e2b3344ba8a0c76b9b57c3
   - enabled: 1
     path: Assets/Scenes/Level 2 - Ground Attack.unity
     guid: d77cfb61e55bf704c945bb4feee2490a
   - enabled: 1
-    path: Assets/Scenes/Cutscene2.unity
+    path: Assets/Scenes/TransitionCutscene2.unity
     guid: 0165b1930f3640d4e9dfc44bb29e75a8
   - enabled: 1
     path: Assets/Scenes/Level 3 - Atmospheric Assault!.unity
     guid: df29e9f267b865b4ca9a42f7c432790e
-  - enabled: 0
-    path: Assets/Scenes/Space Scene.unity
-    guid: e52308253fc3a724d8cf4dd251551490
+  - enabled: 1
+    path: Assets/Scenes/Level 4 - Collision Course.unity
+    guid: 1e76146388bd2ad45bdd319303d26faf
+  - enabled: 1
+    path: Assets/Scenes/Level 5 - Break the Battleship.unity
+    guid: 7563ca13e022def4385adcced5ff725a
+  - enabled: 1
+    path: Assets/Scenes/ClosingCutscene.unity
+    guid: e3bb6d6d6123dbd4a972a4b502c92c5f
   m_configObjects: {}
