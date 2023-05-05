@@ -4,24 +4,6 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 
-//THIS VIDEO WAS A BIG HELP https://www.youtube.com/watch?v=JVbr7osMYTo
-
-
-//TODO:
-//1. Finish Level 1 - Add More Enemies and Spawn Fields
-//1. a) Figure out how to do bossfight - maybe just play cutscene
-//2. Add some sound effects to missile impacts and other explosions
-//3. Create a main menu screen
-//4. Create a better UI showing health, missiles, boost, etc.
-//5. Create powerups for player to pick up
-//6. Create more levels.
-//7. Create death animation for player
-//8. Make missile lock work
-//9. Make indicator to show when enemy is hit  
-//10. Add visual effects for boost/brake (change afterburner length)
-//11. Add a pause menu
-//12. Fix enemy friendly fire
-
 
 public class PlayerMovementController : MonoBehaviour
 {
@@ -32,13 +14,10 @@ public class PlayerMovementController : MonoBehaviour
     private Transform FirePoint;
 
     private Transform closeCrosshair;
-    private Vector3 closeCrosshairDefault = new Vector3(0, 0, 10);
+    private Vector3 closeCrosshairDefault = new Vector3(0, 0, 30); //location for the crosshair to return to
     private Transform farCrosshair;
 
     Camera cam;
-
-    [Header("Parameters")]
-    public float Speed = 18f;
   
     // Start is called before the first frame update
     void Start()
@@ -67,7 +46,7 @@ public class PlayerMovementController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         /* Code for knife flying left or right, LeanTween is awesome for this */
-        //TODO FIX ANIMATION ON THIS
+   
 
         if (Input.GetKey("e")){
             LeanTween.rotateZ(Model.gameObject, -90, 0.2f);
@@ -96,7 +75,8 @@ public class PlayerMovementController : MonoBehaviour
 
         }
 
-        Move(horizontal, vertical, 10);
+        Move(horizontal, vertical, 20);
+        //Functions to make ship look cooler when moving
         HorizontalLean(Model, horizontal, 60, 0.2f);
         //Option to turn on yaw pitching, looks mid
         //yawLean(transform, horizontal, 15, 0.5f);
@@ -121,7 +101,7 @@ public class PlayerMovementController : MonoBehaviour
 
         if (x == 0f && y == 0f)
         {
-            closeCrosshair.localPosition = Vector3.Lerp(closeCrosshair.localPosition, closeCrosshairDefault, 3 * Time.deltaTime);
+            closeCrosshair.localPosition = Vector3.Lerp(closeCrosshair.localPosition, closeCrosshairDefault, 2 * Time.deltaTime);
             //I commented this line out because I didn't know what it was doing and it fixed the dolly track bug.
             //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * 1f);
         }
@@ -130,7 +110,7 @@ public class PlayerMovementController : MonoBehaviour
         lookPos.y = 0;
         var rotation = Quaternion.LookRotation(lookPos);
 
-        Model.rotation = Quaternion.Slerp(Model.transform.rotation, rotation, Time.deltaTime * 2.75f);
+        //Model.rotation = Quaternion.Slerp(Model.transform.rotation, rotation, Time.deltaTime * 2.75f);
 
         //transform.LookAt(closeCrosshair.transform);
 
@@ -155,7 +135,7 @@ public class PlayerMovementController : MonoBehaviour
     }
 
 
-    //https://answers.unity.com/questions/799656/how-to-keep-an-object-within-the-camera-view.html
+    // Clamp function taken from https://answers.unity.com/questions/799656/how-to-keep-an-object-within-the-camera-view.html
     void Clamp(Transform target) 
     {
 
@@ -166,6 +146,8 @@ public class PlayerMovementController : MonoBehaviour
 
     }
 
+
+    //Leaning function code adapted from code seen in this video https://www.youtube.com/watch?v=JVbr7osMYTo
     void HorizontalLean(Transform target, float axis, float leanLimit, float lerpTime)
     {
         Vector3 targetEulerAngels = target.localEulerAngles;

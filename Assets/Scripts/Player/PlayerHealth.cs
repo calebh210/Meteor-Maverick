@@ -14,9 +14,10 @@ public class PlayerHealth : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        updateHealth(-50f);
+        updateHealth(-25f);
         Debug.Log("hit");
         Debug.Log(playerHealth);
+
     }
     public void updateHealth(float damage)
     {

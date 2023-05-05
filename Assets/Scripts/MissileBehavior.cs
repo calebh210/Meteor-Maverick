@@ -42,8 +42,8 @@ public class MissileBehavior : MonoBehaviour
         }
 
 
-
-        Destroy(gameObject);
         Destroy(missileHit, 1);
+        Destroy(gameObject);
+      
     }
 }

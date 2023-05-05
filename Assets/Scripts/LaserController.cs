@@ -18,7 +18,7 @@ public class LaserController : MonoBehaviour
         laserSoundEffect.Play();
         //Set the initial rotation and force for the laser
         transform.Rotate(90, 0, 0);
-        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, 25000f));
+        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, 35000f));
         Destroy(gameObject, 5);
     }
 

@@ -29,6 +29,12 @@ namespace GameStates
                 return new PlayState(PauseMenu);
             }
 
+            if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                Debug.Log("quit");
+               Application.Quit();
+            }
+
             return this;
         }
     }
