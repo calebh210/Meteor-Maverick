@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour
     [SerializeField]
     public TextMeshProUGUI Score;
     [SerializeField]
-    public Image FleetHealth;
+    public Image ObjHealth;
   
     void Update()
     {
@@ -36,9 +36,9 @@ public class UIController : MonoBehaviour
         Score.text = score.ToString();
     }
 
-    public void updateFleetHealth(float health)
+    public void updateObj(float health)
     {
-        FleetHealth.fillAmount = health / 100;
+        ObjHealth.fillAmount = health / 100;
 
     }
         

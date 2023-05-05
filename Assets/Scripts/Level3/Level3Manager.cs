@@ -1,33 +1,54 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Level3Manager : MonoBehaviour
 {
     [SerializeField]
     GameObject PlayerRailCart;
     Cinemachine.CinemachineDollyCart dollyCart;
-    float pathProgress;
     [SerializeField]
     GameObject EnemySpawnPoint;
     public Transform DuelingFighter;
-    bool DuelerSpawned = false;
+
+    public UnityEvent startDialogue;
+
+    private bool isCoroutineRunning = false;
     
     void Start()
     {
-        dollyCart = PlayerRailCart.GetComponent<Cinemachine.CinemachineDollyCart>();
+       startDialogue.Invoke();
+       var newDuelingFighter = Instantiate(DuelingFighter, EnemySpawnPoint.transform.position, Quaternion.identity);
+       newDuelingFighter.transform.parent = EnemySpawnPoint.transform;
     }
 
     
     void Update()
     {
-        pathProgress = dollyCart.m_Position;
-       /* if (pathProgress >= 10 && DuelerSpawned == false)
-        {
-            var newDuelingFighter = Instantiate(DuelingFighter, EnemySpawnPoint.transform.position, EnemySpawnPoint.transform.rotation);
-            newDuelingFighter.transform.parent = EnemySpawnPoint.transform;
-            DuelerSpawned = true;
-        }*/
+        StartCoroutine(SpawnDuelers());
        
     }
+
+    public IEnumerator SpawnDuelers()
+    {
+       
+
+        if (isCoroutineRunning)
+        {
+            yield break;
+        }
+
+        isCoroutineRunning = true;
+
+        yield return new WaitForSeconds(20f);
+        var newDuelingFighter = Instantiate(DuelingFighter, EnemySpawnPoint.transform.position, Quaternion.identity);
+        newDuelingFighter.transform.parent = EnemySpawnPoint.transform;
+    
+
+        isCoroutineRunning = false;
+    }
+
+     
 }

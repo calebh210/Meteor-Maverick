@@ -17,7 +17,7 @@ public class DuelingFighterController : MonoBehaviour
 
     private void Start()
     {
-        fireRate = 5f;
+        fireRate = 2f;
         nextFire = Time.time;
         player = GameObject.Find("PlayerCamParent/Player/PlayerModel").transform;
     }
