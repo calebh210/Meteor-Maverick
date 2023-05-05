@@ -30,7 +30,11 @@ public class UIDialogueController : MonoBehaviour
         introText.SetActive(true);
         yield return new WaitForSeconds(3.0f);
         introText.SetActive(false);
-        objHealthBar.SetActive(true);
+        if(objHealthBar != null )
+        {
+            objHealthBar.SetActive(true);
+        }
+        
     }
 
     IEnumerator finishingDialogue()

@@ -284,6 +284,17 @@ Terrain:
   m_GroupingID: 0
   m_RenderingLayerMask: 1
   m_AllowAutoConnect: 1
+--- !u!114 &92933674 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5523369940603699361, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
+  m_PrefabInstance: {fileID: 2042308702670367063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02c360c37b19394aa03d1e080912123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &129307220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7088224475486718647, guid: 1f066b3cf7c17bb4592f2aec76324d23, type: 3}
@@ -668,6 +679,26 @@ PrefabInstance:
     - target: {fileID: 759996426837446516, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: PauseMenu
+      value: 
+      objectReference: {fileID: 2090234308}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: saveScore.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 92933674}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: saveScore.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: saveScore.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerScore, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: saveScore.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 759996426837446518, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
       propertyPath: m_RootOrder
@@ -1254,7 +1285,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 301432055159800522, guid: 25c2947e4b351cb448239194883e0caa, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4955853503640232643, guid: 25c2947e4b351cb448239194883e0caa, type: 3}
       propertyPath: crossPos
@@ -2769,7 +2800,7 @@ PrefabInstance:
     - target: {fileID: 1605728893151533692, guid: d99f9ab8a03891049b0be2a6f22cd212, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cfd59902ef5a8314ab8617e5bdf20f55, type: 3}
+      objectReference: {fileID: 21300000, guid: 37067311057b12141a011c59dc69b8dd, type: 3}
     - target: {fileID: 1605728893413445146, guid: d99f9ab8a03891049b0be2a6f22cd212, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3540,6 +3571,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2090234308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3494952283212255644, guid: 25c2947e4b351cb448239194883e0caa, type: 3}
+  m_PrefabInstance: {fileID: 773311244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2102040180
 GameObject:
   m_ObjectHideFlags: 0
@@ -4203,7 +4239,7 @@ PrefabInstance:
     - target: {fileID: 1605728893151533692, guid: d99f9ab8a03891049b0be2a6f22cd212, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cfd59902ef5a8314ab8617e5bdf20f55, type: 3}
+      objectReference: {fileID: 21300000, guid: 37067311057b12141a011c59dc69b8dd, type: 3}
     - target: {fileID: 1605728893413445146, guid: d99f9ab8a03891049b0be2a6f22cd212, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4315,7 +4351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introText: {fileID: 235983697755575736}
   finishingText: {fileID: 1808902825}
-  fleetHealthBar: {fileID: 0}
+  objHealthBar: {fileID: 0}
 --- !u!224 &235983698784362349
 RectTransform:
   m_ObjectHideFlags: 0

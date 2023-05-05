@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     bool gameOver = false;
     private GameStates.State GameState;
-
+    public UnityEvent saveScore; // Save score right before changing scenes
 
     [SerializeField] //Adding the pause menu instance
     GameObject PauseMenu;
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        saveScore.Invoke();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
