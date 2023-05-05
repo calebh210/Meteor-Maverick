@@ -2193,7 +2193,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 917659261}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: updateFleetHealth
+        m_MethodName: updateObj
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2685,6 +2685,10 @@ PrefabInstance:
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 1022231208}
+    - target: {fileID: 359822761901799156, guid: 25c2947e4b351cb448239194883e0caa, type: 3}
+      propertyPath: ObjHealth
+      value: 
+      objectReference: {fileID: 332356819}
     - target: {fileID: 359822761901799156, guid: 25c2947e4b351cb448239194883e0caa, type: 3}
       propertyPath: FleetHealth
       value: 

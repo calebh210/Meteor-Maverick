@@ -29,10 +29,14 @@ public class Level1Manager : MonoBehaviour
     private void Start()
     {
         dollyCart = PlayerRailCart.GetComponent<Cinemachine.CinemachineDollyCart>();
+        //Resetting the score on every fresh start of the game
+        PlayerPrefs.SetInt("score", 0);
+        FindObjectOfType<GameManager>().UpdateScore(0);
     }
 
     private void Update()
     {
+        //Tracking player progress along rail - make events happen at certain distances
         pathProgress = dollyCart.m_Position;
 
         if(pathProgress > 75 & hasRun == false )

@@ -15,6 +15,8 @@ public class Level2Manager : MonoBehaviour
     public UnityEvent switchToFree;
     public UnityEvent startDialogue;
 
+    private bool wasInvoked = false;
+
     private void Start()
     {
         dollyCart = PlayerRailCart.GetComponent<Cinemachine.CinemachineDollyCart>();
@@ -26,9 +28,10 @@ public class Level2Manager : MonoBehaviour
         pathProgress = dollyCart.m_Position;
 
 
-        if (pathProgress > 6800) 
+        if (pathProgress > 6800 & !wasInvoked) 
         { 
             switchToFree.Invoke();
+            wasInvoked = true;
         }
 
     }

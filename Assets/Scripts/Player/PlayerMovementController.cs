@@ -5,24 +5,6 @@ using UnityEngine.Playables;
 using UnityEngine.UI;
 
 
-
-
-//TODO:
-//1. Finish Level 1 - Add More Enemies and Spawn Fields
-//1. a) Figure out how to do bossfight - maybe just play cutscene
-//2. Add some sound effects to missile impacts and other explosions
-//3. Create a main menu screen
-//4. Create a better UI showing health, missiles, boost, etc.
-//5. Create powerups for player to pick up
-//6. Create more levels.
-//7. Create death animation for player
-//8. Make missile lock work
-//9. Make indicator to show when enemy is hit  
-//10. Add visual effects for boost/brake (change afterburner length)
-//11. Add a pause menu
-//12. Fix enemy friendly fire
-
-
 public class PlayerMovementController : MonoBehaviour
 {
 
@@ -64,7 +46,7 @@ public class PlayerMovementController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         /* Code for knife flying left or right, LeanTween is awesome for this */
-        //TODO FIX ANIMATION ON THIS
+   
 
         if (Input.GetKey("e")){
             LeanTween.rotateZ(Model.gameObject, -90, 0.2f);
@@ -94,6 +76,7 @@ public class PlayerMovementController : MonoBehaviour
         }
 
         Move(horizontal, vertical, 20);
+        //Functions to make ship look cooler when moving
         HorizontalLean(Model, horizontal, 60, 0.2f);
         //Option to turn on yaw pitching, looks mid
         //yawLean(transform, horizontal, 15, 0.5f);

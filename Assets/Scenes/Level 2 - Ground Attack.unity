@@ -284,17 +284,6 @@ Terrain:
   m_GroupingID: 0
   m_RenderingLayerMask: 1
   m_AllowAutoConnect: 1
---- !u!114 &92933674 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5523369940603699361, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
-  m_PrefabInstance: {fileID: 2042308702670367063}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e02c360c37b19394aa03d1e080912123, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &129307220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7088224475486718647, guid: 1f066b3cf7c17bb4592f2aec76324d23, type: 3}
@@ -685,19 +674,47 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2090234308}
     - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
       propertyPath: saveScore.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 92933674}
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
       propertyPath: saveScore.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SaveScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 221087866}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: updateScoreboard
       objectReference: {fileID: 0}
     - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
       propertyPath: saveScore.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerScore, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
       propertyPath: saveScore.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
+      propertyPath: updateUIScore.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 759996426837446518, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}

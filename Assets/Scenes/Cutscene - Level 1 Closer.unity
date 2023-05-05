@@ -244,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introText: {fileID: 802564136}
   finishingText: {fileID: 0}
-  fleetHealthBar: {fileID: 0}
+  objHealthBar: {fileID: 0}
 --- !u!1001 &121970985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1810,7 +1810,7 @@ PrefabInstance:
     - target: {fileID: 1605728893151533692, guid: d99f9ab8a03891049b0be2a6f22cd212, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cfd59902ef5a8314ab8617e5bdf20f55, type: 3}
+      objectReference: {fileID: 21300000, guid: 37067311057b12141a011c59dc69b8dd, type: 3}
     - target: {fileID: 1605728893413445146, guid: d99f9ab8a03891049b0be2a6f22cd212, type: 3}
       propertyPath: m_IsActive
       value: 0

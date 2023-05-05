@@ -891,17 +891,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2042308702302705503, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
   m_PrefabInstance: {fileID: 1725066457}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1135230493 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5523369940603699361, guid: 7a4cd0cdf1dc5ef42a15b83a5b02e8ad, type: 3}
-  m_PrefabInstance: {fileID: 1725066457}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135230490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e02c360c37b19394aa03d1e080912123, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1258632461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,11 +1678,11 @@ PrefabInstance:
     - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
       propertyPath: PauseMenu
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1985478417420162578, guid: 44a8310864c6e3243b7f7d54a9183889, type: 3}
     - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
       propertyPath: saveScore.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1135230493}
+      objectReference: {fileID: 0}
     - target: {fileID: 759996426837446517, guid: 69253d14f09017d4c920c6782c96f88a, type: 3}
       propertyPath: saveScore.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SaveScore

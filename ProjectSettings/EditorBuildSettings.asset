@@ -27,8 +27,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 3 - Atmospheric Assault!.unity
     guid: df29e9f267b865b4ca9a42f7c432790e
   - enabled: 1
+    path: Assets/Scenes/TransitionCutscene3.unity
+    guid: 206b08f303db41f4c989ab2882bb858d
+  - enabled: 1
     path: Assets/Scenes/Level 4 - Collision Course.unity
     guid: 1e76146388bd2ad45bdd319303d26faf
+  - enabled: 1
+    path: Assets/Scenes/TransitionCutscene4.unity
+    guid: 4b5896ee9b58e474d9cbdc4853b2d813
   - enabled: 1
     path: Assets/Scenes/Level 5 - Break the Battleship.unity
     guid: 7563ca13e022def4385adcced5ff725a

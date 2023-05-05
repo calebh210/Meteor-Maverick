@@ -65,6 +65,7 @@ public class AsteroidSpawner : MonoBehaviour
         
     }
 
+    //Random asteroid spawner for players to dodge
     public IEnumerator SpawnAsteroids()
     {
         //setting the location of the follow spawner to the player's x and y
