@@ -73,9 +73,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Asset Store and Import folders (too large)
-Assets/Imports/
-Assets/Models/*_All_Files/
-Assets/Models/Luminaris*/
-Assets/Models/Freighter_*/
-Assets/Models/Zenith*/
-Assets/Models/Fighter_*/
+#Assets/Imports/
+#Assets/Models/*_All_Files/
+#Assets/Models/Luminaris*/
+#Assets/Models/Freighter_*/
+#Assets/Models/Zenith*/
+#Assets/Models/Fighter_*/
